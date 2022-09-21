@@ -1,3 +1,19 @@
+# Folder
+/target/
+*/target/*
+*.jar
+/logs
+/out/
+*.log
+!.mvn/wrapper/maven-wrapper.jar
+
+# Ide and OS
+.idea
+*.iws
+*.iml
+*.ipr
+*.DS_Store
+
 # Compiled class file
 *.class
 
@@ -6,9 +22,6 @@
 
 # BlueJ files
 *.ctxt
-
-# Mobile Tools for Java (J2ME)
-.mtj.tmp/
 
 # Package Files #
 *.jar
@@ -19,5 +32,13 @@
 *.tar.gz
 *.rar
 
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+# sts
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
 hs_err_pid*
