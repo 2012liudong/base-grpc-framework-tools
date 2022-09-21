@@ -17,3 +17,7 @@ project.packaging = pom
 
 app.module.type = server
 api.mudule.artifactId = base-grpc-framework-core
+
+app.module.type = dao
+api.mudule.artifactId = base-grpc-framework-dao
+api.mudule.parent = server
