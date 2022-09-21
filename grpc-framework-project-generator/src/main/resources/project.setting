@@ -1,0 +1,19 @@
+# project config
+project.name = base-grpc-framework
+project.groupId = com.zd
+project.version = 1.0-SNAPSHOT
+project.packaging = jar
+
+#module config
+#type: api(proto,api), appication, persistence, common, server(restful, grpc, fixed)
+project.modules = "api, app, common, core, dao"
+
+api.module.type = proto
+api.mudule.artifactId = base-grpc-framework-api
+
+app.module.type = app
+api.mudule.artifactId = base-grpc-framework-application
+project.packaging = pom
+
+app.module.type = server
+api.mudule.artifactId = base-grpc-framework-core
