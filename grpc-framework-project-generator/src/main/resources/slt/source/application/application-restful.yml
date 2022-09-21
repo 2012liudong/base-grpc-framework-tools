@@ -1,0 +1,15 @@
+# 服务配置 http配置和GRPC接口配置
+server:
+  port: 18080
+  compression:
+    enabled: true
+    mime-types: application/json,application/octet-stream
+
+# swagger 自定义配置，为了扩展base-package功能
+swagger-config:
+  enabled: true #正式环境需要设置为false
+  title: GrpcFramework-API
+  description: GrpcFramework-Server-Restful-API
+  version: V1.0
+  base-package: com.zd.baseframework.core.restful #多个base包可用逗号分隔
+  authorization-key-name: token
