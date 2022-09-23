@@ -9,7 +9,7 @@ project.packaging = jar
 #type: api(proto,api), application, persistence, common, server(restful, grpc, fixed)
 project.modules = api, app, common, core, dao
 
-api.module.type = proto
+api.module.type = proto1
 api.module.artifactId = base-grpc-framework-api
 
 app.module.type = application

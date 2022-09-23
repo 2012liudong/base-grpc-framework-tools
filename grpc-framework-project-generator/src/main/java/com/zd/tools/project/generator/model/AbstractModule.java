@@ -3,6 +3,8 @@ package com.zd.tools.project.generator.model;
 import com.zd.tools.project.generator.consts.GenEnum;
 import lombok.Data;
 
+import java.util.Set;
+
 @Data
 public abstract class AbstractModule extends AbstractBo {
 
@@ -26,7 +28,11 @@ public abstract class AbstractModule extends AbstractBo {
 
     private String resourcesPath;
 
-    public void configOwnDir(){ };
+    public void configOwnDir(){ }
 
-    public void configOwnFile(){ };
+    public void configOwnFile(){ }
+
+    public Set validate(){
+        return null;
+    }
 }

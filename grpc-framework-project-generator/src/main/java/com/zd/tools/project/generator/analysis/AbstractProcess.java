@@ -1,9 +1,11 @@
 package com.zd.tools.project.generator.analysis;
 
+import cn.hutool.log.Log;
 import lombok.Data;
 
 @Data
 public abstract class AbstractProcess {
+    private static final Log log = Log.get();
 
     private Context context;
 
@@ -30,9 +32,11 @@ public abstract class AbstractProcess {
     public final void process(){
         validate();
         parse();
-        if(!context.hasError()){
-            clear();
-            build();
+        if(context.hasError()){
+            context.getErrorList().stream().forEach(item -> log.error(item));
+            return;
         }
+        clear();
+        build();
     }
 }

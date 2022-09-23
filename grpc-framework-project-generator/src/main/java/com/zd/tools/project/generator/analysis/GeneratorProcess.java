@@ -29,11 +29,11 @@ public class GeneratorProcess extends AbstractProcess{
     @Override
     public void parse() {
         final Map<String, String> original = getContext().getOriginal();
-        Project project = SettingFileConvert.buidlProject(original);
+        Project project = SettingFileConvert.buidlProject(getContext(), original);
         project.setBasePath(getContext().getRootPath() + Const.PATH_ROOT + project.getName() + File.separator);
         getContext().setProject(project);
 
-        List<AbstractModule>  moduleBos = SettingFileConvert.buildModules(original);
+        List<AbstractModule>  moduleBos = SettingFileConvert.buildModules(getContext(), original);
 
         for(AbstractModule item: moduleBos){
             item.setBasePath( project.getBasePath() + project.getName() + "-" +item.getName());

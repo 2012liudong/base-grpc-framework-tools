@@ -5,9 +5,9 @@ import cn.hutool.core.util.StrUtil;
 import com.zd.tools.project.generator.model.Project;
 import lombok.Data;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 @Data
 public class Context {
@@ -18,10 +18,14 @@ public class Context {
 
     private Project project;
 
-    List<String> errorList = new ArrayList<>();
+    Set<String> errorList = new HashSet<>();
 
     public void addError(String msg, Object... params) {
-        this.errorList.add("Error:" + StrUtil.format(msg, params));
+        this.errorList.add(StrUtil.format(msg, params));
+    }
+
+    public void addError(Set<String> errors){
+        this.errorList.addAll(errors);
     }
 
     public boolean hasError() {
