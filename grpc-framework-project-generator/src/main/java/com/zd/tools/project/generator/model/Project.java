@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Data
-public class ProjectBo extends BaseBo {
+public class Project extends AbstractBo {
 
     private String groupId;
 
@@ -16,7 +16,6 @@ public class ProjectBo extends BaseBo {
 
     private String packaging;
 
-    private Map<String, ModuleBo> modules = new HashMap<>();
-
+    private Map<String, AbstractModule> modules = new HashMap<>();
 
 }

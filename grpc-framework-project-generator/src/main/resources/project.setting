@@ -7,29 +7,30 @@ project.packaging = jar
 
 #module config
 #type: api(proto,api), application, persistence, common, server(restful, grpc, fixed)
-project.modules = "api, app, common, core, dao"
+project.modules = api, app, common, core, dao
 
 api.module.type = proto
-api.mudule.artifactId = base-grpc-framework-api
+api.module.artifactId = base-grpc-framework-api
 
 app.module.type = application
-app.mudule.artifactId = base-grpc-framework-application
-app.mudule.packaging = pom
+app.module.artifactId = base-grpc-framework-application
+app.module.packaging = pom
+app.module.build = build
 
 core.module.type = fixed
-core.mudule.artifactId = base-grpc-framework-core
-core.moudle.server.port = 18080
-core.moudle.server.grpc.port = 9090
+core.module.artifactId = base-grpc-framework-core
+core.moudle.port = 18080
+core.moudle.grpc.port = 9090
 core.moudle.log.storageTerm = 30
 core.moudle.tokenKey = token
 core.module.apiPath = /api/**
 
-dao.module.type = dao
-dao.mudule.artifactId = base-grpc-framework-dao
+dao.module.type = persistence
+dao.module.artifactId = base-grpc-framework-dao
 dao.module.mapper = mybatis
-dao.mudule.wrapBy = server
-dao.mudule.mysql.ip = 127.0.0.1
-dao.mudule.mysql.port = 3306
-dao.mudule.mysql.username = root
-dao.mudule.mysql.password = 12345678
+dao.module.wrapBy = server
+dao.module.mysql.ip = 127.0.0.1
+dao.module.mysql.port = 3306
+dao.module.mysql.username = root
+dao.module.mysql.password = 12345678
 

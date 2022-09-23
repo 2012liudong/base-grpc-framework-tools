@@ -1,6 +1,10 @@
 package com.zd.tools.project.generator.model.module;
 
-public class ModuleGrpcBo extends ModuleRestfulBo{
+import lombok.Data;
+
+@Data
+public class ModuleFixed extends ModuleRestful {
 
     private String grpcPort;
+
 }
