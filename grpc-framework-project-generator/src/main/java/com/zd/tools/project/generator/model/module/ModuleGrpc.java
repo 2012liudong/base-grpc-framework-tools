@@ -25,7 +25,7 @@ public class ModuleGrpc extends ModuleCommon {
 
     @Override
     public void configOwnSourceFile(){
-        super.configOwnSourceFile();
+//        super.configOwnSourceFile();
         getSourceFiles().add(new SourceFile("log4j2.xml", "",  GenEnum.fileType.config, GenEnum.fileOperatorType.copy));
         getSourceFiles().add(new SourceFile("GloablInterceptorRegister.j","/grpc/interceptor", GenEnum.fileType.source, GenEnum.fileOperatorType.create));
         getSourceFiles().add(new SourceFile("GlobalClientInterceptor.j","/grpc/interceptor", GenEnum.fileType.source, GenEnum.fileOperatorType.create));

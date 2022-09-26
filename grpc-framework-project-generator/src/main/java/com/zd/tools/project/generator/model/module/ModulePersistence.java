@@ -27,7 +27,7 @@ public class ModulePersistence extends ModuleCommon {
 
     @Override
     public void configOwnSourceFile(){
-        super.configOwnSourceFile();
+//        super.configOwnSourceFile();
 
         getSourceFiles().add(new SourceFile("application-persistence.yml", "",  GenEnum.fileType.yml, GenEnum.fileOperatorType.copy));
 

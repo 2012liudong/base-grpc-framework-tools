@@ -26,7 +26,7 @@ public class ModuleRestful extends ModuleCommon {
 
     @Override
     public void configOwnSourceFile(){
-        super.configOwnSourceFile();
+//        super.configOwnSourceFile();
         getSourceFiles().add(new SourceFile("log4j2.xml", "",  GenEnum.fileType.config, GenEnum.fileOperatorType.copy));
         getSourceFiles().add(new SourceFile("HttpExceptionAdvice.j", "/restful/advice",  GenEnum.fileType.source, GenEnum.fileOperatorType.create));
         getSourceFiles().add(new SourceFile("AccessInterceptor.j","/restful/interceptor", GenEnum.fileType.source, GenEnum.fileOperatorType.create));
