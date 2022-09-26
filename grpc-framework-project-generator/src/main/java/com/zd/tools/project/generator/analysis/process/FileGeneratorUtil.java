@@ -1,5 +1,6 @@
 package com.zd.tools.project.generator.analysis.process;
 
+import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.io.FileUtil;
 import cn.hutool.core.util.CharUtil;
 import cn.hutool.core.util.StrUtil;
@@ -12,6 +13,7 @@ import com.zd.tools.project.generator.model.file.SourceFile;
 
 import java.io.File;
 import java.nio.charset.Charset;
+import java.util.HashMap;
 import java.util.Map;
 
 public class FileGeneratorUtil {
@@ -20,11 +22,35 @@ public class FileGeneratorUtil {
     public static void createProjectStructure(Project project, AbstractModule moduleBo){
         for(String item : moduleBo.getDirs()){
             if(!FileUtil.exist(item)){
-                log.debug(moduleBo.getName()+":"+item);
+//                log.debug(moduleBo.getName()+":"+item);
                 FileUtil.mkdir(item);
             }
-
         }
+    }
+
+    public static void createProjectFile(Project project, SourceFile file){
+        String sourceFileRoot = Const.SOURCE_ROOT + file.getFileType().name();
+        String sourceFileName = file.getName(); //aa.java
+        String sourceFileContext = FileUtil.readString(sourceFileRoot +File.separator+ sourceFileName, Charset.defaultCharset());
+        String newFileName = "pom" + "."+ file.getFileType().name();
+
+        Map<String, Object> map = new HashMap<>();
+        StringBuilder sb = new StringBuilder();
+        for (Map.Entry<String, AbstractModule> entry : project.getModules().entrySet()) {
+            sb.append("\t\t<module>"+project.getName()+"-"+entry.getValue().getName()+"</module>");
+            sb.append("\n");
+        }
+        map.put("moduleList", sb.toString());
+        map.putAll(BeanUtil.beanToMap(project));
+        String newFileContext = StrFormatterUtil.format(sourceFileContext, map, true);
+
+        String newFilePath = project.getBasePath() + File.separator + file.getPath() + File.separator + newFileName;
+        File newFile = new File(newFilePath);
+        if (file.getFileOperatorType() == GenEnum.fileOperatorType.create && FileUtil.exist(newFile)){
+            FileUtil.del(newFile);
+        }
+
+        FileUtil.writeUtf8String(newFileContext, newFile);
     }
 
     /*
@@ -36,7 +62,7 @@ public class FileGeneratorUtil {
     * 所以当前文件的包路径为 moudle的basePackage + file.path
     * new SourceFile("SwaggerConfig","/config/", GenEnum.fileType.java, GenEnum.fileOperatorType.copy));
     * */
-    public static void createProjectFile(Project project, AbstractModule module, SourceFile file){
+    public static void createModuleFile(Project project, AbstractModule module, SourceFile file){
         String sourceFileRoot = Const.SOURCE_ROOT + file.getFileType().name();
         String sourceFileName = file.getName(); //aa.java
         String sourceFileContext = FileUtil.readString(sourceFileRoot +File.separator+ sourceFileName, Charset.defaultCharset());
@@ -73,7 +99,7 @@ public class FileGeneratorUtil {
                 if(module.getType() != GenEnum.projectType.application){
 
                 }
-                newFileName = "application-dev" + "."+ file.getFileType().name();
+//                newFileName = "application-dev" + "."+ file.getFileType().name();
                 newFileRoot = module.getResourcesPath();
                 break;
             case config:

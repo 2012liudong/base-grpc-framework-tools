@@ -39,6 +39,8 @@ public class GeneratorProcess extends AbstractProcess{
 
         WrapTreeUtil.buildTree(project, moduleBos);
 
+        project.configOwnSourceFile();
+
         for(AbstractModule item: moduleBos){
             //设置文件目录
             item.setSrcPath(item.getBasePath()+ File.separator + "src" + File.separator + "main" + File.separator + "java");
@@ -70,12 +72,16 @@ public class GeneratorProcess extends AbstractProcess{
 
     @Override
     public void build() {
+        for(SourceFile item : getContext().getProject().getSourceFiles()){
+            FileGeneratorUtil.createProjectFile(getContext().getProject(), item);
+        }
+
         for(AbstractModule moduleBo : getContext().getProject().getModules().values()){
             log.info("start build "+ moduleBo.getName());
             FileGeneratorUtil.createProjectStructure(getContext().getProject(), moduleBo);
 
             for (SourceFile item : moduleBo.getSourceFiles()) {
-                FileGeneratorUtil.createProjectFile(getContext().getProject(), moduleBo, item);
+                FileGeneratorUtil.createModuleFile(getContext().getProject(), moduleBo, item);
             }
         }
     }

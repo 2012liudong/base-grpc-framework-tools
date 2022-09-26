@@ -5,10 +5,10 @@
     <modelVersion>4.0.0</modelVersion>
 
     <!--project definition-->
-    <groupId>com.zd</groupId>
-    <artifactId>base-grpc-framework-parent</artifactId>
+    <groupId>${groupId}</groupId>
+    <artifactId>${name}-parent</artifactId>
     <packaging>pom</packaging>
-    <version>1.0-SNAPSHOT</version>
+    <version>${version}</version>
 
     <!--import springboot-->
     <parent>
@@ -185,11 +185,7 @@
     </pluginRepositories>
 
     <modules>
-        <module>base-grpc-framework-common</module>
-        <module>base-grpc-framework-api</module>
-        <module>base-grpc-framework-dao</module>
-        <module>base-grpc-framework-core</module>
-        <module>base-grpc-framework-application</module>
+${moduleList}
     </modules>
 
     <build>

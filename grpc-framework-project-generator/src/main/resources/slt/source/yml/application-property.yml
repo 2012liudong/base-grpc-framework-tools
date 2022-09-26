@@ -1,3 +1,0 @@
-app-properties:
-  token-key: token
-  http-api-path: /api/**

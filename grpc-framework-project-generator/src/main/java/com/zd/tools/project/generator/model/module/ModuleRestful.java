@@ -32,5 +32,9 @@ public class ModuleRestful extends ModuleCommon {
         getSourceFiles().add(new SourceFile("AccessInterceptor.j","/restful/interceptor", GenEnum.fileType.source, GenEnum.fileOperatorType.create));
         getSourceFiles().add(new SourceFile("InterceptorRegister.j","/restful/interceptor", GenEnum.fileType.source, GenEnum.fileOperatorType.create));
         getSourceFiles().add(new SourceFile("TokenInterceptor.j","/restful/interceptor", GenEnum.fileType.source, GenEnum.fileOperatorType.create));
+
+        getSourceFiles().add(new SourceFile("application-restful.yml", "",  GenEnum.fileType.yml, GenEnum.fileOperatorType.copy));
+
+        getSourceFiles().add(new SourceFile("pom_restful.xml", "",  GenEnum.fileType.xml, GenEnum.fileOperatorType.copy));
     }
 }
