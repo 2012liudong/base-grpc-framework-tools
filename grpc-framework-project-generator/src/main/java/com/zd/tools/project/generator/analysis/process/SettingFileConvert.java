@@ -34,8 +34,9 @@ public final class SettingFileConvert {
 
         List<AbstractModule> moduleBos = new ArrayList<>();
         for(String moduleName: moduleNames){
+            String tempModuleName = StrUtil.trim(moduleName);
+
             Function<Map<String, String>, AbstractModule> function = (original)->{
-                String tempModuleName = StrUtil.trim(moduleName);
                 String moduleTypeValue =original.get(tempModuleName + Keys.KEY_MODULE_TYPE);
 
                 if(StrUtil.isEmpty(moduleTypeValue)){
@@ -66,6 +67,7 @@ public final class SettingFileConvert {
                     default:
                         result = BuildModuleUtil.buildModuleCommon(tempModuleName, original);
                 }
+                result.setName(tempModuleName);
                 return result;
             };
 

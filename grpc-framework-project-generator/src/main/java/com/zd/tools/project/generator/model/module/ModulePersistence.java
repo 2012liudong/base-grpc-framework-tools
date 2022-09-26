@@ -19,6 +19,7 @@ public class ModulePersistence extends ModuleCommon {
 
     @Override
     public void configOwnDir() {
-        this.getDirs().add(getResourcesPath() + File.separator + getMapper());
+        super.configOwnDir();
+        getDirs().add(getResourcesPath() + File.separator + getMapper());
     }
 }

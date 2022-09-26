@@ -1,4 +1,4 @@
-package com.zd.baseframework.config;
+package {package};
 
 import com.google.common.base.Function;
 import com.google.common.base.Optional;

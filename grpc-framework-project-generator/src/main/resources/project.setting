@@ -9,7 +9,7 @@ project.packaging = jar
 #type: api(proto,api), application, persistence, common, server(restful, grpc, fixed)
 project.modules = api, app, common, core, dao
 
-api.module.type = proto1
+api.module.type = proto
 api.module.artifactId = base-grpc-framework-api
 
 app.module.type = application
@@ -28,9 +28,7 @@ core.module.apiPath = /api/**
 dao.module.type = persistence
 dao.module.artifactId = base-grpc-framework-dao
 dao.module.mapper = mybatis
-dao.module.wrapBy = server
 dao.module.mysql.ip = 127.0.0.1
 dao.module.mysql.port = 3306
 dao.module.mysql.username = root
 dao.module.mysql.password = 12345678
-

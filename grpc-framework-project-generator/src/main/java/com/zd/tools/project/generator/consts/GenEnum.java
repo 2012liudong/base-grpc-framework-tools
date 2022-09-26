@@ -1,10 +1,8 @@
 package com.zd.tools.project.generator.consts;
 
-import cn.hutool.core.util.EnumUtil;
-
 public interface GenEnum {
 
-    GenEnum getEnum(String code);
+//    GenEnum getEnum(String code);
 
     enum projectType implements GenEnum{
         proto,
@@ -16,11 +14,25 @@ public interface GenEnum {
         grpc,
         fixed,
         ;
+//        @Override
+//        public GenEnum getEnum(String code) {
+//            return EnumUtil.getEnumMap(GenEnum.projectType.class).get(code);
+//        }
+    }
 
-        @Override
-        public GenEnum getEnum(String code) {
-            return EnumUtil.getEnumMap(GenEnum.projectType.class).get(code);
-        }
+    enum fileType implements GenEnum{
+        java,
+        yml,
+        xml,
+        config,
+        ;
+    }
+
+    enum fileOperatorType implements GenEnum{
+        copy,
+        create,
+        append,
+        ;
     }
 
 }

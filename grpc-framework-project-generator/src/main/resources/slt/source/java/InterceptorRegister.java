@@ -1,15 +1,10 @@
 package com.zd.baseframework.core.restful.interceptor;
 
-import com.zd.baseframework.common.spring.ApperProperties;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Slf4j
 @Component
-public class InterceptorRegister implements WebMvcConfigurer {
+public class {className} implements WebMvcConfigurer {
 
     @Autowired
     private AccessInterceptor accessInterceptor;

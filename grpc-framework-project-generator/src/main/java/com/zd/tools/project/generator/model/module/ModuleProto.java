@@ -10,7 +10,7 @@ public class ModuleProto extends AbstractModule {
 
     @Override
     public void configOwnDir() {
-        this.getDirs().clear();
-        this.getDirs().add(getBasePath()+ File.separator + "src" + File.separator + "main" + File.separator + "proto");
+        getDirs().clear();
+        getDirs().add(getBasePath()+ File.separator + "src" + File.separator + "main" + File.separator + "proto");
     }
 }
