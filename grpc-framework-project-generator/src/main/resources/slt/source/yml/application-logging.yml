@@ -1,5 +1,0 @@
-logging:
-  config: classpath:log4j2.xml
-  level:
-    root: INFO
-    org.springframework.web: ERROR
