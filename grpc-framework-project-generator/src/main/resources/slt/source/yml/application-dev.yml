@@ -11,7 +11,7 @@ logging:
     root: INFO
     org.springframework.web: ERROR
 
-{grpyml}
+${grpyml}
 
 app-properties:
   token-key: token
@@ -24,6 +24,6 @@ spring:
   aop:
     auto: true
     proxy-target-class: true
-  {persistenceyml}
+  ${persistenceyml}
 
-{restful}
+${restful}

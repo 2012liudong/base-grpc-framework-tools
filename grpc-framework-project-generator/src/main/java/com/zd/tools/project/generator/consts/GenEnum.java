@@ -21,7 +21,7 @@ public interface GenEnum {
     }
 
     enum fileType implements GenEnum{
-        java,
+        source,
         yml,
         xml,
         config,

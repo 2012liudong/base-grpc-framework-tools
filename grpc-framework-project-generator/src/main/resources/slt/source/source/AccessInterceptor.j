@@ -1,14 +1,14 @@
-package com.zd.baseframework.core.restful.interceptor;
+package ${package};
 
-import com.zd.baseframework.common.spring.ApperProperties;
-import com.zd.baseframework.common.spring.restful.AbstractAccessInterceptor;
+import ${commonModule}.spring.ApperProperties;
+import ${commonModule}.spring.restful.AbstractAccessInterceptor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Slf4j
 @Component
-public class AccessInterceptor extends AbstractAccessInterceptor {
+public class ${className} extends AbstractAccessInterceptor {
 
     @Autowired
     private ApperProperties apperProperties;

@@ -1,4 +1,4 @@
-package {package};
+package ${package};
 
 /**
  * @Title: com.zd.baseframework.BaseFrameworkApplication
@@ -6,10 +6,10 @@ package {package};
  * @author liudong
  * @date 2022/6/13 10:41 PM
  */
-@SpringBootApplication(scanBasePackages = {"{package}", "cn.hutool.extra.spring"})
-@MapperScan("{package}")
+@SpringBootApplication(scanBasePackages = {"${package}", "cn.hutool.extra.spring"})
+@MapperScan("${package}")
 @EnableConfigurationProperties
-public class {className} {
+public class ${className} {
 
     public static void main(String []args){
         TimeZone.setDefault(TimeZone.getTimeZone("CTT"));

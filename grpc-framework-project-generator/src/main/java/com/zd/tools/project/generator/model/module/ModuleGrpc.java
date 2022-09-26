@@ -17,6 +17,7 @@ public class ModuleGrpc extends ModuleCommon {
     @Override
     public void configOwnDir() {
         super.configOwnDir();
+        getDirs().add(getPackagePath() + File.separator + "server");
         getDirs().add(getPackagePath() + File.separator + "grpc");
         getDirs().add(getPackagePath() + File.separator + "grpc/interceptor");
         getDirs().add(getPackagePath() + File.separator + "grpc/dto");
@@ -26,9 +27,9 @@ public class ModuleGrpc extends ModuleCommon {
     public void configOwnSourceFile(){
         super.configOwnSourceFile();
         getSourceFiles().add(new SourceFile("log4j2.xml", "",  GenEnum.fileType.config, GenEnum.fileOperatorType.copy));
-        getSourceFiles().add(new SourceFile("GloablInterceptorRegister.java","/grpc/interceptor", GenEnum.fileType.java, GenEnum.fileOperatorType.create));
-        getSourceFiles().add(new SourceFile("GlobalClientInterceptor.java","/grpc/interceptor", GenEnum.fileType.java, GenEnum.fileOperatorType.create));
-        getSourceFiles().add(new SourceFile("GlobalServerInterceptor.java","/grpc/interceptor", GenEnum.fileType.java, GenEnum.fileOperatorType.create));
-        getSourceFiles().add(new SourceFile("GrpcTokenInterceptor.java","/grpc/interceptor", GenEnum.fileType.java, GenEnum.fileOperatorType.create));
+        getSourceFiles().add(new SourceFile("GloablInterceptorRegister.j","/grpc/interceptor", GenEnum.fileType.source, GenEnum.fileOperatorType.create));
+        getSourceFiles().add(new SourceFile("GlobalClientInterceptor.j","/grpc/interceptor", GenEnum.fileType.source, GenEnum.fileOperatorType.create));
+        getSourceFiles().add(new SourceFile("GlobalServerInterceptor.j","/grpc/interceptor", GenEnum.fileType.source, GenEnum.fileOperatorType.create));
+        getSourceFiles().add(new SourceFile("GrpcTokenInterceptor.j","/grpc/interceptor", GenEnum.fileType.source, GenEnum.fileOperatorType.create));
     }
 }

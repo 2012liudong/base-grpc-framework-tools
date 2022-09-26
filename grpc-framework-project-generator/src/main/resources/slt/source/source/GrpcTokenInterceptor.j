@@ -1,11 +1,13 @@
-package com.zd.baseframework.core.restful.interceptor;
+package ${package};
 
+import cn.hutool.core.util.StrUtil;
+import ${commonModule}.constant.enumeration.AppEnum;
+import ${commonModule}.entity.restful.LoginUser;
+import ${commonModule}.spring.grpc.AbstractGrpcTokenInterceptor;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-@Component
-public class {className} extends AbstractTokenInterceptor {
-
+public class ${className} extends AbstractGrpcTokenInterceptor {
     @Override
     protected LoginUser loginUser() {
         LoginUser loginUser = new LoginUser();

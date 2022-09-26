@@ -1,7 +1,6 @@
 package com.zd.tools.project.generator.analysis.process;
 
 import cn.hutool.core.io.FileUtil;
-import cn.hutool.core.text.StrFormatter;
 import cn.hutool.core.util.CharUtil;
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.log.Log;
@@ -41,20 +40,29 @@ public class FileGeneratorUtil {
         String sourceFileRoot = Const.SOURCE_ROOT + file.getFileType().name();
         String sourceFileName = file.getName(); //aa.java
         String sourceFileContext = FileUtil.readString(sourceFileRoot +File.separator+ sourceFileName, Charset.defaultCharset());
-        System.out.println(file.getName());
         String newFileName = sourceFileName;
         if(file.getFileOperatorType() == GenEnum.fileOperatorType.create){
             newFileName = StrUtil.upperFirst(StrUtil.toCamelCase(project.getName(), CharUtil.DASHED)) + sourceFileName;
         }
 
         Map<String, String> map = module.configProperty();
+
+        for (Map.Entry<String, AbstractModule> entry : project.getModules().entrySet()) {
+            map.put(entry.getValue().getType().name() + "Module", project.getBasePackage()+"."+entry.getValue().getName());
+            if(entry.getValue().getType()== GenEnum.projectType.fixed){
+                map.put(GenEnum.projectType.restful.name() + "Module", project.getBasePackage()+"."+entry.getValue().getName() + ".restful");
+                map.put(GenEnum.projectType.grpc.name() + "Module", project.getBasePackage()+"."+entry.getValue().getName() +".grpc");
+            }
+        }
+
         map.put("package", project.getBasePackage() + module.getName() + StrUtil.replace(file.getPath(), File.separator, "."));
         map.put("className", newFileName.substring(0, newFileName.lastIndexOf(".")));
-        String newFileContext = StrFormatter.format(sourceFileContext, map, true);
+        String newFileContext = StrFormatterUtil.format(sourceFileContext, map, true);
 
         String newFileRoot = "";
         switch (file.getFileType()){
-            case java:
+            case source:
+                newFileName = newFileName + "ava";//todo 这块的后缀需做成配置的
                 newFileRoot = module.getPackagePath();
                 break;
             case xml:
@@ -62,6 +70,9 @@ public class FileGeneratorUtil {
                 newFileName = "pom" + "."+ file.getFileType().name();
                 break;
             case yml:
+                if(module.getType() != GenEnum.projectType.application){
+
+                }
                 newFileName = "application-dev" + "."+ file.getFileType().name();
                 newFileRoot = module.getResourcesPath();
                 break;

@@ -23,9 +23,10 @@ public class ModuleFixed extends ModuleRestful {
     public void configOwnSourceFile(){
         super.configOwnSourceFile();
         getSourceFiles().add(new SourceFile("log4j2.xml", "",  GenEnum.fileType.config, GenEnum.fileOperatorType.copy));
-        getSourceFiles().add(new SourceFile("GloablInterceptorRegister.java","/grpc/interceptor", GenEnum.fileType.java, GenEnum.fileOperatorType.create));
-        getSourceFiles().add(new SourceFile("GlobalClientInterceptor.java","/grpc/interceptor", GenEnum.fileType.java, GenEnum.fileOperatorType.create));
-        getSourceFiles().add(new SourceFile("GlobalServerInterceptor.java","/grpc/interceptor", GenEnum.fileType.java, GenEnum.fileOperatorType.create));
-        getSourceFiles().add(new SourceFile("GrpcTokenInterceptor.java","/grpc/interceptor", GenEnum.fileType.java, GenEnum.fileOperatorType.create));
+        getSourceFiles().add(new SourceFile("GloablInterceptorRegister.j","/grpc/interceptor", GenEnum.fileType.source, GenEnum.fileOperatorType.create));
+        getSourceFiles().add(new SourceFile("GlobalClientInterceptor.j","/grpc/interceptor", GenEnum.fileType.source, GenEnum.fileOperatorType.create));
+        getSourceFiles().add(new SourceFile("GlobalServerInterceptor.j","/grpc/interceptor", GenEnum.fileType.source, GenEnum.fileOperatorType.create));
+        getSourceFiles().add(new SourceFile("GrpcTokenInterceptor.j","/grpc/interceptor", GenEnum.fileType.source, GenEnum.fileOperatorType.create));
+        getSourceFiles().add(new SourceFile("application-fixed.yml", "",  GenEnum.fileType.yml, GenEnum.fileOperatorType.append));
     }
 }
