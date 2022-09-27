@@ -26,7 +26,8 @@ public class ModuleFixed extends ModuleRestful {
         getSourceFiles().add(new SourceFile("GlobalClientInterceptor.j","/grpc/interceptor", GenEnum.fileType.source, GenEnum.fileOperatorType.create));
         getSourceFiles().add(new SourceFile("GlobalServerInterceptor.j","/grpc/interceptor", GenEnum.fileType.source, GenEnum.fileOperatorType.create));
         getSourceFiles().add(new SourceFile("GrpcTokenInterceptor.j","/grpc/interceptor", GenEnum.fileType.source, GenEnum.fileOperatorType.create));
-        getSourceFiles().add(new SourceFile("application-fixed.yml", "",  GenEnum.fileType.yml, GenEnum.fileOperatorType.copy));
+
+        getSourceFiles().add(new SourceFile("application-fixed.properties", "",  GenEnum.fileType.yml, GenEnum.fileOperatorType.copy));
 
         getSourceFiles().add(new SourceFile("pom_fixed.xml", "",  GenEnum.fileType.xml, GenEnum.fileOperatorType.copy));
     }

@@ -12,8 +12,10 @@ public abstract class AbstractModule extends AbstractBo {
 
     private GenEnum.projectType type;
 
+    //base-grpc-framework-application
     private String artifactId;
 
+    //pom
     private String packaging;
 
     private String config;
@@ -24,11 +26,19 @@ public abstract class AbstractModule extends AbstractBo {
 
     private Build build;
 
+    // .../base-grpc-framework/base-grpc-framework-app/src/main/java
     private String srcPath;
 
+    // .../base-grpc-framework/base-grpc-framework-app/src/main/java/com/zd/baseframework/app
     private String packagePath;
 
+    // .../base-grpc-framework/base-grpc-framework-app/src/main/resources
     private String resourcesPath;
+
+    //.../base-grpc-framework/base-grpc-framework-app
+//    private String basePath;
+    // app
+//    private String name;
 
     public void configOwnDir(){ }
 

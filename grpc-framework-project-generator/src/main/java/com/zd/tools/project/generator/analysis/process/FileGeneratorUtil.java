@@ -83,6 +83,17 @@ public class FileGeneratorUtil {
 
         map.put("package", project.getBasePackage() + module.getName() + StrUtil.replace(file.getPath(), File.separator, "."));
         map.put("className", newFileName.substring(0, newFileName.lastIndexOf(".")));
+        map.put("parentModule", project.getName() + "-" + "parent");
+        map.put("parentGroupId", project.getGroupId());
+        map.put("parentVersion", project.getVersion());
+
+        map.put("artifactId", module.getArtifactId());
+        map.put("packaging", module.getPackaging());
+
+        for (Map.Entry<String, AbstractModule> entry : project.getModules().entrySet()) {
+            map.put(entry.getValue().getType().name()+"ModuleArtifactId"  , entry.getValue().getArtifactId());
+        }
+
         String newFileContext = StrFormatterUtil.format(sourceFileContext, map, true);
 
         String newFileRoot = "";

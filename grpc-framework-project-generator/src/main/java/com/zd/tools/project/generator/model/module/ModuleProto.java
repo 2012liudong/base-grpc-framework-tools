@@ -20,7 +20,7 @@ public class ModuleProto extends AbstractModule {
     public void configOwnSourceFile(){
         super.configOwnSourceFile();
 
-        getSourceFiles().add(new SourceFile("application-proto.yml", "",  GenEnum.fileType.yml, GenEnum.fileOperatorType.copy));
+        getSourceFiles().add(new SourceFile("application-proto.properties", "",  GenEnum.fileType.yml, GenEnum.fileOperatorType.copy));
 
         getSourceFiles().add(new SourceFile("pom_proto.xml", "",  GenEnum.fileType.xml, GenEnum.fileOperatorType.copy));
     }

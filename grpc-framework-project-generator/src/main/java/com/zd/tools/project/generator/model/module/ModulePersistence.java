@@ -29,7 +29,7 @@ public class ModulePersistence extends ModuleCommon {
     public void configOwnSourceFile(){
 //        super.configOwnSourceFile();
 
-        getSourceFiles().add(new SourceFile("application-persistence.yml", "",  GenEnum.fileType.yml, GenEnum.fileOperatorType.copy));
+        getSourceFiles().add(new SourceFile("application-persistence.properties", "",  GenEnum.fileType.yml, GenEnum.fileOperatorType.copy));
 
         getSourceFiles().add(new SourceFile("pom_persistence.xml", "",  GenEnum.fileType.xml, GenEnum.fileOperatorType.copy));
     }

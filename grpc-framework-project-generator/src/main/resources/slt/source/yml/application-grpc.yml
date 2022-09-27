@@ -1,9 +1,0 @@
-grpc:
-  server:
-    port: 9898   #发布远程访问地址
-    in-process-name: native  #发布本地访问地址
-  client:
-    inProcess: #自定义的客户端名称
-      address: in-process:native #配置内部访问服务名称
-      enableKeepAlive: true
-      keepAliveWithoutCalls: true

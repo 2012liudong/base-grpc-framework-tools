@@ -34,8 +34,8 @@ public class ModuleApplication extends AbstractModule {
         getSourceFiles().add(new SourceFile("Application.j", "",  GenEnum.fileType.source, GenEnum.fileOperatorType.create));
         getSourceFiles().add(new SourceFile("SwaggerConfig.j","/config", GenEnum.fileType.source, GenEnum.fileOperatorType.copy));
 
-        getSourceFiles().add(new SourceFile("application-dev.yml", "",  GenEnum.fileType.yml, GenEnum.fileOperatorType.copy));
-        getSourceFiles().add(new SourceFile("application-application.yml", "",  GenEnum.fileType.yml, GenEnum.fileOperatorType.copy));
+        getSourceFiles().add(new SourceFile("application-dev.properties", "",  GenEnum.fileType.yml, GenEnum.fileOperatorType.copy));
+        getSourceFiles().add(new SourceFile("application-application.properties", "",  GenEnum.fileType.yml, GenEnum.fileOperatorType.copy));
 
         getSourceFiles().add(new SourceFile("pom_application.xml", "",  GenEnum.fileType.xml, GenEnum.fileOperatorType.copy));
     }

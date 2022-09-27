@@ -11,7 +11,7 @@ public class ModuleCommon extends AbstractModule {
     @Override
     public void configOwnSourceFile(){
         super.configOwnSourceFile();
-        getSourceFiles().add(new SourceFile("application-common.yml", "",  GenEnum.fileType.yml, GenEnum.fileOperatorType.copy));
+        getSourceFiles().add(new SourceFile("application-common.properties", "",  GenEnum.fileType.yml, GenEnum.fileOperatorType.copy));
 
         getSourceFiles().add(new SourceFile("pom_common.xml", "",  GenEnum.fileType.xml, GenEnum.fileOperatorType.copy));
     }

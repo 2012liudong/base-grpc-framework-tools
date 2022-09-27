@@ -3,14 +3,14 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>base-grpc-framework-parent</artifactId>
-        <groupId>com.zd</groupId>
-        <version>1.0-SNAPSHOT</version>
+        <artifactId>${parentModule}</artifactId>
+        <groupId>${parentGroupId}</groupId>
+        <version>${parentVersion}</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>base-grpc-framework-core</artifactId>
-    <packaging>jar</packaging>
+    <artifactId>${artifactId}</artifactId>
+    <packaging>${packaging}</packaging>
 
     <dependencies>
         <!--grpc server-->
@@ -29,19 +29,21 @@
 
         <!--base-grpc-framework project depenency-->
         <dependency>
-            <groupId>com.zd</groupId>
-            <artifactId>base-grpc-framework-common</artifactId>
+            <groupId>${parentGroupId}</groupId>
+            <artifactId>${commonModuleArtifactId}</artifactId>
             <version>${project.parent.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.zd</groupId>
-            <artifactId>base-grpc-framework-api</artifactId>
+            <groupId>${parentGroupId}</groupId>
+            <artifactId>${protoModuleArtifactId}</artifactId>
             <version>${project.parent.version}</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>com.zd</groupId>
-            <artifactId>base-grpc-framework-dao</artifactId>
+            <groupId>${parentGroupId}</groupId>
+            <artifactId>${persistenceArtifactId}</artifactId>
             <version>${project.parent.version}</version>
+            <scope>provided</scope>
         </dependency>
 
         <!--mybatis，mysql device-->

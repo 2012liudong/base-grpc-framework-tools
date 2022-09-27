@@ -31,7 +31,8 @@ public class ModuleGrpc extends ModuleCommon {
         getSourceFiles().add(new SourceFile("GlobalClientInterceptor.j","/grpc/interceptor", GenEnum.fileType.source, GenEnum.fileOperatorType.create));
         getSourceFiles().add(new SourceFile("GlobalServerInterceptor.j","/grpc/interceptor", GenEnum.fileType.source, GenEnum.fileOperatorType.create));
         getSourceFiles().add(new SourceFile("GrpcTokenInterceptor.j","/grpc/interceptor", GenEnum.fileType.source, GenEnum.fileOperatorType.create));
-        getSourceFiles().add(new SourceFile("application-grpc.yml", "",  GenEnum.fileType.yml, GenEnum.fileOperatorType.copy));
+
+        getSourceFiles().add(new SourceFile("application-grpc.properties", "",  GenEnum.fileType.yml, GenEnum.fileOperatorType.copy));
 
         getSourceFiles().add(new SourceFile("pom_grpc.xml", "",  GenEnum.fileType.xml, GenEnum.fileOperatorType.copy));
     }

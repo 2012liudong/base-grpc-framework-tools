@@ -1,5 +1,6 @@
 package com.zd.tools.project.generator.analysis.process;
 
+import cn.hutool.core.util.StrUtil;
 import com.zd.tools.project.generator.consts.GenEnum;
 import com.zd.tools.project.generator.consts.Keys;
 import com.zd.tools.project.generator.model.AbstractModule;
@@ -99,13 +100,18 @@ public class BuildModuleUtil {
 
     private static void buildModuleCommProperty(AbstractModule moduleBo, Map<String, String> original){
         moduleBo.setArtifactId( original.get(moduleBo.getName() + Keys.KEY_MODULE_ARTIFACT_ID ) );
-        moduleBo.setPackaging( original.get(moduleBo.getName() + Keys.KEY_MODULE_PACKAGING ) );
+        String packaging = original.get(moduleBo.getName() + Keys.KEY_MODULE_PACKAGING );
+        if(StrUtil.isEmpty(packaging)){
+            packaging = original.get(Keys.KEY_PROJECT_PACKAGING);
+        }
+        moduleBo.setPackaging( packaging );
         moduleBo.setConfig( original.get(moduleBo.getName() + Keys.KEY_MODULE_CONFIG ) );
         moduleBo.setLogging( ModuleBuildTool.buildModuleLogging(moduleBo.getName(), original) );
         moduleBo.setBuild( ModuleBuildTool.buildModuleBuilding(moduleBo.getName(), original) );
 
         moduleBo.setBasePath( original.get(Keys.KEY_PROJECT_NAME ) );
         moduleBo.setName( moduleBo.getName() );
+
     }
 
 
