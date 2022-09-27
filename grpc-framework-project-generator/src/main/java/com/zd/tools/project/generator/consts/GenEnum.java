@@ -20,6 +20,7 @@ public interface GenEnum {
 //        }
     }
 
+    //源文件目录名
     enum fileType implements GenEnum{
         source,
         yml,

@@ -1,23 +1,26 @@
 package com.zd.tools.project.generator.model.module;
 
 import com.zd.tools.project.generator.consts.GenEnum;
+import com.zd.tools.project.generator.model.AbstractModule;
 import com.zd.tools.project.generator.model.file.SourceFile;
 import lombok.Data;
 
 import java.io.File;
 
 @Data
-public class ModulePersistence extends ModuleCommon {
+public class ModulePersistence extends AbstractModule {
 
     private String mapper;
 
-    private String ip;
+    private String dbIp;
 
     private String dbPort;
 
-    private String username;
+    private String dbName;
 
-    private String password;
+    private String dbUsername;
+
+    private String dbPassword;
 
     @Override
     public void configOwnDir() {
@@ -27,9 +30,9 @@ public class ModulePersistence extends ModuleCommon {
 
     @Override
     public void configOwnSourceFile(){
-//        super.configOwnSourceFile();
+        super.configOwnSourceFile();
 
-        getSourceFiles().add(new SourceFile("application-persistence.properties", "",  GenEnum.fileType.yml, GenEnum.fileOperatorType.copy));
+        getSourceFiles().add(new SourceFile("application-persistence.properties", "",  GenEnum.fileType.yml, GenEnum.fileOperatorType.append));
 
         getSourceFiles().add(new SourceFile("pom_persistence.xml", "",  GenEnum.fileType.xml, GenEnum.fileOperatorType.copy));
     }

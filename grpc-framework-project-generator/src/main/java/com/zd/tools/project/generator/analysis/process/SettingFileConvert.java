@@ -26,6 +26,9 @@ public final class SettingFileConvert {
         project.setVersion(original.get(Keys.KEY_PROJECT_VERSION ));
         project.setBasePackage(original.get(Keys.KEY_PROJECT_BASE_PACKAGE ));
         project.setPackaging(original.get(Keys.KEY_PROJECT_PACKAGING ));
+
+        project.setModulePropertyBo( BuildModuleUtil.ModuleBuildTool.buildProperty("", original) );
+
         return project;
     }
 
@@ -63,6 +66,7 @@ public final class SettingFileConvert {
                     case application:
                         result = BuildModuleUtil.buildModuleApplication(tempModuleName, original); break;
                     case api:
+                        result = BuildModuleUtil.buildModuleApi(tempModuleName, original);         break;
                     case common:
                     default:
                         result = BuildModuleUtil.buildModuleCommon(tempModuleName, original);

@@ -18,6 +18,8 @@ public class Context {
 
     private Project project;
 
+    private String springBoot;
+
     Set<String> errorList = new HashSet<>();
 
     public void addError(String msg, Object... params) {

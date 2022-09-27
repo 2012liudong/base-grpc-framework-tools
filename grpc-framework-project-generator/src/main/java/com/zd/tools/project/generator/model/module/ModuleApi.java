@@ -6,7 +6,7 @@ import com.zd.tools.project.generator.model.file.SourceFile;
 import lombok.Data;
 
 @Data
-public class ModuleCommon extends AbstractModule {
+public class ModuleApi extends AbstractModule {
 
     @Override
     public void configOwnSourceFile(){

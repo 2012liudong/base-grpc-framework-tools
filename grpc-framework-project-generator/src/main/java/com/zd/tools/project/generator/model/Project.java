@@ -2,6 +2,7 @@ package com.zd.tools.project.generator.model;
 
 import com.zd.tools.project.generator.consts.GenEnum;
 import com.zd.tools.project.generator.model.file.SourceFile;
+import com.zd.tools.project.generator.model.module.model.ModulePropertyBo;
 import lombok.Data;
 
 import java.util.HashMap;
@@ -29,6 +30,8 @@ public class Project extends AbstractBo {
     private String packaging;
 
     private Map<String, AbstractModule> modules = new HashMap<>();
+
+    private ModulePropertyBo modulePropertyBo;
 
     public void configOwnSourceFile(){
 

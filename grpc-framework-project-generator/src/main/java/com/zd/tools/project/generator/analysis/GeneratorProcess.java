@@ -7,6 +7,7 @@ import com.zd.tools.project.generator.analysis.process.FileGeneratorUtil;
 import com.zd.tools.project.generator.analysis.process.SettingFileConvert;
 import com.zd.tools.project.generator.analysis.process.WrapTreeUtil;
 import com.zd.tools.project.generator.consts.Const;
+import com.zd.tools.project.generator.consts.GenEnum;
 import com.zd.tools.project.generator.model.AbstractModule;
 import com.zd.tools.project.generator.model.Project;
 import com.zd.tools.project.generator.model.file.SourceFile;
@@ -59,6 +60,10 @@ public class GeneratorProcess extends AbstractProcess{
             item.configOwnSourceFile();
 
             project.getModules().put(item.getName(), item);
+
+            if(item.getType() == GenEnum.projectType.application ){
+                getContext().setSpringBoot(item.getResourcesPath());
+            }
         }
     }
 
@@ -81,6 +86,7 @@ public class GeneratorProcess extends AbstractProcess{
             FileGeneratorUtil.createProjectStructure(getContext().getProject(), moduleBo);
 
             for (SourceFile item : moduleBo.getSourceFiles()) {
+                moduleBo.getConfigPropertyMap().put(Const.PATH_SPRINGBOOT_FILE, getContext().getSpringBoot());
                 FileGeneratorUtil.createModuleFile(getContext().getProject(), moduleBo, item);
             }
         }

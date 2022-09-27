@@ -113,7 +113,7 @@
                 <directory>src/main/resources</directory>
             </resource>
             <resource>
-                <directory>../base-grpc-framework-dao/src/main/resources/mybatis</directory>
+                <directory>../${persistenceModuleArtifactId}/src/main/resources/${mapper}</directory>
                 <targetPath>./mybatis</targetPath>
             </resource>
         </resources>

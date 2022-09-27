@@ -30,12 +30,11 @@ public class ModuleApplication extends AbstractModule {
 
     @Override
     public void configOwnSourceFile(){
-//        super.configOwnSourceFile();
+        super.configOwnSourceFile();
         getSourceFiles().add(new SourceFile("Application.j", "",  GenEnum.fileType.source, GenEnum.fileOperatorType.create));
         getSourceFiles().add(new SourceFile("SwaggerConfig.j","/config", GenEnum.fileType.source, GenEnum.fileOperatorType.copy));
 
         getSourceFiles().add(new SourceFile("application-dev.properties", "",  GenEnum.fileType.yml, GenEnum.fileOperatorType.copy));
-        getSourceFiles().add(new SourceFile("application-application.properties", "",  GenEnum.fileType.yml, GenEnum.fileOperatorType.copy));
 
         getSourceFiles().add(new SourceFile("pom_application.xml", "",  GenEnum.fileType.xml, GenEnum.fileOperatorType.copy));
     }

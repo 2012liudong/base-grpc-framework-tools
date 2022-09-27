@@ -18,13 +18,7 @@ public abstract class AbstractModule extends AbstractBo {
     //pom
     private String packaging;
 
-    private String config;
-
-    private Logging logging;
-
     private String wrapBy;
-
-    private Build build;
 
     // .../base-grpc-framework/base-grpc-framework-app/src/main/java
     private String srcPath;
@@ -35,6 +29,8 @@ public abstract class AbstractModule extends AbstractBo {
     // .../base-grpc-framework/base-grpc-framework-app/src/main/resources
     private String resourcesPath;
 
+    private Map<String, String> configPropertyMap = new HashMap<>();
+
     //.../base-grpc-framework/base-grpc-framework-app
 //    private String basePath;
     // app
@@ -43,11 +39,6 @@ public abstract class AbstractModule extends AbstractBo {
     public void configOwnDir(){ }
 
     public void configOwnSourceFile(){ }
-
-    public Map<String, String> configProperty(){
-        Map<String, String> map = new HashMap<>();
-        return map;
-    }
 
     public Set validate(){
         return null;

@@ -1,6 +1,5 @@
 package ${package};
 
-import net.devh.boot.grpc.client.interceptor.GrpcGlobalClientInterceptor;
 import net.devh.boot.grpc.server.interceptor.GrpcGlobalServerInterceptor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.Ordered;
@@ -26,11 +25,5 @@ public class ${className} {
     @Order(value = 20000)
     GrpcTokenInterceptor grpcTokenInterceptor() {
         return new GrpcTokenInterceptor();
-    }
-
-    @GrpcGlobalClientInterceptor
-    @Order(value = 30000)
-    GlobalClientInterceptor cClientInterceptor() {
-        return new GlobalClientInterceptor();
     }
 }
