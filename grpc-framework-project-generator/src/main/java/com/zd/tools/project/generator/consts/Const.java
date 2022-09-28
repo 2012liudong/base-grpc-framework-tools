@@ -35,6 +35,10 @@ public interface Const {
     String PRE_PLACEHOLDER_GRPC_MODULE_IMPORT = GenEnum.projectType.grpc +PLACEHOLDER_MODULE_NAME_SUFFIX;
     //className定义
     String PLACEHOLDER_MODULE_CLASS_NAME = "className";
+    //grpc拦截器特殊处理
+    String PLACEHOLDER_MODULE_CLASS_NAME_GRPC_ACCESS = "grpcAccessIntereptor";
+    String PLACEHOLDER_MODULE_CLASS_NAME_GRPC_TOKEN = "grpcTokenIntereptor";
+    String CLASS_NAME_GRPC_REGISTER = "GrpInterceptorRegister";
 
 
     /*------创建module结构相关*/

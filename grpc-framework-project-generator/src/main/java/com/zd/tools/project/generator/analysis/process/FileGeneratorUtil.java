@@ -3,6 +3,7 @@ package com.zd.tools.project.generator.analysis.process;
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.io.FileUtil;
 import cn.hutool.core.util.CharUtil;
+import cn.hutool.core.util.ObjectUtil;
 import cn.hutool.core.util.StrUtil;
 import com.zd.tools.project.generator.consts.Const;
 import com.zd.tools.project.generator.consts.GenEnum;
@@ -13,6 +14,7 @@ import com.zd.tools.project.generator.model.module.ModulePersistence;
 
 import java.io.File;
 import java.nio.charset.Charset;
+import java.sql.SQLOutput;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -129,6 +131,12 @@ public class FileGeneratorUtil {
         if(file.getFileOperatorType() == GenEnum.fileOperatorType.create){
             String newFileName = StrUtil.upperFirst(StrUtil.toCamelCase(project.getName(), CharUtil.DASHED)) + file.getName();
             placeHodlerValueMap.put(Const.PLACEHOLDER_MODULE_CLASS_NAME, newFileName.substring(0, newFileName.lastIndexOf(".")));
+            if(module.getType() == GenEnum.projectType.grpc || module.getType() == GenEnum.projectType.fixed){
+                if(StrUtil.contains(file.getName(), Const.CLASS_NAME_GRPC_REGISTER)){
+                    placeHodlerValueMap.put(Const.PLACEHOLDER_MODULE_CLASS_NAME_GRPC_TOKEN, StrUtil.upperFirst(StrUtil.toCamelCase(project.getName(), CharUtil.DASHED)) + "GrpcTokenInterceptor");
+                    placeHodlerValueMap.put(Const.PLACEHOLDER_MODULE_CLASS_NAME_GRPC_ACCESS, StrUtil.upperFirst(StrUtil.toCamelCase(project.getName(), CharUtil.DASHED)) + "GrpcAccessInterceptor");
+                }
+            }
         }
     }
 

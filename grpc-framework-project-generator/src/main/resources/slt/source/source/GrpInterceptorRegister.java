@@ -21,13 +21,13 @@ public class ${className} {
     @GrpcGlobalServerInterceptor
     @Order(value = 10000)
     AbstractGrpcAccessInterceptor grpcAccessInterceptor() {
-        return new GlobalServerInterceptor();
+        return new ${grpcAccessIntereptor}();
     }
 
     @GrpcGlobalServerInterceptor
     @Order(value = 20000)
     AbstractGrpcTokenInterceptor grpcTokenInterceptor() {
-        return new GrpcTokenInterceptor();
+        return new ${grpcTokenIntereptor}();
     }
 }
 
