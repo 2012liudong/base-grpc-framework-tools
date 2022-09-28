@@ -5,6 +5,7 @@ import cn.hutool.core.io.FileUtil;
 import cn.hutool.core.util.CharUtil;
 import cn.hutool.core.util.ObjectUtil;
 import cn.hutool.core.util.StrUtil;
+import com.zd.tools.project.generator.MainClass;
 import com.zd.tools.project.generator.consts.Const;
 import com.zd.tools.project.generator.consts.GenEnum;
 import com.zd.tools.project.generator.model.AbstractModule;
@@ -30,7 +31,7 @@ public class FileGeneratorUtil {
     /**创建主pom.xml文件*/
     public static void createProjectFile(final Project project, final SourceFile file){
         //读取源文件内容
-        String sourceFileRoot = Const.SOURCE_ROOT + file.getFileType().name();
+        String sourceFileRoot = MainClass.currentPath + Const.SOURCE_ROOT + file.getFileType().name();
         String sourceFileContext = FileUtil.readString(sourceFileRoot +File.separator+ file.getName(), Charset.defaultCharset());
 
         //替换文件成最终内容
@@ -53,7 +54,7 @@ public class FileGeneratorUtil {
     }
 
     public static void createModuleFile(final Project project, final AbstractModule module, final SourceFile file){
-        String sourceFileRoot = Const.SOURCE_ROOT + file.getFileType().name();
+        String sourceFileRoot = MainClass.currentPath+ Const.SOURCE_ROOT + file.getFileType().name();
         String sourceFileName = file.getName();
         String sourceFileContext = FileUtil.readString(sourceFileRoot +File.separator+ sourceFileName, Charset.defaultCharset());
 

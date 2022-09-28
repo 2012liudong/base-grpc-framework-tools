@@ -1,6 +1,7 @@
 package com.zd.tools.project.generator;
 
 import cn.hutool.core.collection.CollUtil;
+import cn.hutool.core.io.resource.ResourceUtil;
 import cn.hutool.core.util.ArrayUtil;
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.log.Log;
@@ -16,11 +17,15 @@ public class MainClass {
 
     private static String projectSettingFileName = "project.setting";
 
+    public static String currentPath;
+
     public static void main(String []args){
-        String currentPath = MainClass.mainPath();
+
+        currentPath = MainClass.mainPath();
         if(ArrayUtil.isNotEmpty(args)){
             projectSettingFileName = args[0];
         }
+
         log.info("Setting file:" + projectSettingFileName);
         Setting setting =  SettingUtil.get(currentPath + File.separator + projectSettingFileName);
 

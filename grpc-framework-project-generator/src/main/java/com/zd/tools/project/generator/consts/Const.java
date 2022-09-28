@@ -2,6 +2,7 @@ package com.zd.tools.project.generator.consts;
 
 import cn.hutool.core.io.resource.ResourceUtil;
 import cn.hutool.core.text.StrPool;
+import cn.hutool.core.util.StrUtil;
 
 import java.io.File;
 
@@ -13,10 +14,10 @@ public interface Const {
     String C_BACKSLASH = StrPool.BACKSLASH;
 
     // 工程输出目录
-    String PATH_ROOT = "output" + File.separator;
+    String PATH_ROOT = "/output" + File.separator;
 
     //工具内置的源文件根目录
-    String SOURCE_ROOT = ResourceUtil.getResource(".").getPath() + "slt/source/";
+    String SOURCE_ROOT = "/slt/source/";
 
     String FILENAME_POP = "pom.xml";
     String FILENAME_SPRING = "application-dev.properties";
