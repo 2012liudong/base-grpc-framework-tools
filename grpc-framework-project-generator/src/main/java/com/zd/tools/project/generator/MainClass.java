@@ -1,9 +1,6 @@
 package com.zd.tools.project.generator;
 
-import cn.hutool.core.collection.CollUtil;
-import cn.hutool.core.io.resource.ResourceUtil;
 import cn.hutool.core.util.ArrayUtil;
-import cn.hutool.core.util.StrUtil;
 import cn.hutool.log.Log;
 import cn.hutool.setting.Setting;
 import cn.hutool.setting.SettingUtil;
