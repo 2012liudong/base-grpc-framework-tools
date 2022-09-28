@@ -7,8 +7,10 @@ import java.io.File;
 
 public interface Const {
 
-    String C_LF = String.valueOf(StrPool.C_LF);//换行符
-    String C_TAB = String.valueOf(StrPool.C_TAB);//TAB符
+    String C_LF = StrPool.LF;//换行符
+    String C_TAB = StrPool.TAB;//TAB符
+    String C_SLASH = StrPool.SLASH;//斜杠
+    String C_BACKSLASH = StrPool.BACKSLASH;
 
     // 工程输出目录
     String PATH_ROOT = "output" + File.separator;

@@ -6,7 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
- * @Title: com.zd.baseframework.core.grpc.interceptor.GlobalServerInterceptorConfiguration
+ * @Title: ${package}.${className}
  * @Description
  * @author liudong
  * @date 2022/1/13 4:40 PM

@@ -75,8 +75,11 @@ public final class SettingFileConvert {
                         result = BuildModuleUtil.buildModulePersistence(tempModuleName, original); break;
 
                     case common:
-                    default:
                         result = BuildModuleUtil.buildModuleCommon(tempModuleName, original);
+                        break;
+                    default:
+                        result = null;
+                        break;
                 }
                 result.setBasePath(context.getProject().getBasePath() + context.getProject().getName() + "-" + tempModuleName);
                 return result;

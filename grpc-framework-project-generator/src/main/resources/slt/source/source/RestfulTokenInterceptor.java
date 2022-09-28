@@ -1,5 +1,6 @@
 package ${package};
 
+import cn.hutool.core.util.StrUtil;
 import ${commonModule}.constant.enumeration.AppEnum;
 import ${commonModule}.entity.restful.LoginUser;
 import ${commonModule}.spring.restful.AbstractTokenInterceptor;

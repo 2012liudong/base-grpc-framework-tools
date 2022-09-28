@@ -13,7 +13,7 @@ public class BuildModuleUtil {
 
     /*api*/
     public static AbstractModule buildModuleApi(String moduleName, Map<String, String> original){
-        ModuleCommon moduleBo = new ModuleCommon();
+        ModuleApi moduleBo = new ModuleApi();
         moduleBo.setName(moduleName);
         moduleBo.setType( GenEnum.projectType.api );
 

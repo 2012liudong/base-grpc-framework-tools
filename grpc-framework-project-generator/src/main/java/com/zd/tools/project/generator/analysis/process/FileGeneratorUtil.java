@@ -80,7 +80,8 @@ public class FileGeneratorUtil {
         //如果是新创建类型则重新起一个名字，因为涉及到类的名称，所以要
         String newFileName = sourceFileName;
         if(file.getFileOperatorType() == GenEnum.fileOperatorType.create){
-            newFileName = String.valueOf(placeHodlerValueMap.get( Const.PLACEHOLDER_MODULE_CLASS_NAME ));
+            newFileName = String.valueOf(placeHodlerValueMap.get( Const.PLACEHOLDER_MODULE_CLASS_NAME )
+            +sourceFileName.substring(sourceFileName.lastIndexOf(".")));
         }
 
         //得到用占位符替换过的新文件内容
@@ -127,7 +128,7 @@ public class FileGeneratorUtil {
 
         if(file.getFileOperatorType() == GenEnum.fileOperatorType.create){
             String newFileName = StrUtil.upperFirst(StrUtil.toCamelCase(project.getName(), CharUtil.DASHED)) + file.getName();
-            placeHodlerValueMap.put(Const.PLACEHOLDER_MODULE_CLASS_NAME, newFileName);
+            placeHodlerValueMap.put(Const.PLACEHOLDER_MODULE_CLASS_NAME, newFileName.substring(0, newFileName.lastIndexOf(".")));
         }
     }
 

@@ -3,7 +3,9 @@ package com.zd.tools.project.generator.analysis.process;
 import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.text.StrFormatter;
 import cn.hutool.core.util.StrUtil;
+import com.zd.tools.project.generator.consts.Const;
 
+import java.io.File;
 import java.util.Map;
 
 public final class StrFormatterUtil extends StrFormatter {
@@ -32,5 +34,10 @@ public final class StrFormatterUtil extends StrFormatter {
             template2 = StrUtil.replace(template2, "${" + key + "}", value);
         }
         return template2;
+    }
+
+    public static String replaceSlash(CharSequence template){
+        String n = StrUtil.replace(template, Const.C_SLASH, File.separator);
+        return StrUtil.replace(n, Const.C_BACKSLASH, File.separator);
     }
 }

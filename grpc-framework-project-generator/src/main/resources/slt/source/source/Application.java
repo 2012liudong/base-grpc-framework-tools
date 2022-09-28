@@ -1,12 +1,18 @@
 package ${package};
 
+import org.mybatis.spring.annotation.MapperScan;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
+
+import java.util.TimeZone;
 /**
- * @Title: com.zd.baseframework.BaseFrameworkApplication
+ * @Title: ${package}.${className}
  * @Description Springboot MainClass，suggest to use a config database system, such as nacos.
  * @author liudong
  * @date 2022/6/13 10:41 PM
  */
-@SpringBootApplication(scanBasePackages = {"${restfulModule}${fixedModule}${grpcModule}", "cn.hutool.extra.spring"})
+@SpringBootApplication(scanBasePackages = {"${restfulModule}${fixedModule}${grpcModule}","${commonModule}", "cn.hutool.extra.spring"})
 @MapperScan("${restfulModule}${fixedModule}${grpcModule}")
 @EnableConfigurationProperties
 public class ${className} {
