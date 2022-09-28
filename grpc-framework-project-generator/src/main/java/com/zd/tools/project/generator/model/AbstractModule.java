@@ -31,11 +31,6 @@ public abstract class AbstractModule extends AbstractBo {
 
     private Map<String, String> configPropertyMap = new HashMap<>();
 
-    //.../base-grpc-framework/base-grpc-framework-app
-//    private String basePath;
-    // app
-//    private String name;
-
     public void configOwnDir(){ }
 
     public void configOwnSourceFile(){ }

@@ -33,12 +33,4 @@ public final class StrFormatterUtil extends StrFormatter {
         }
         return template2;
     }
-
-    public static String[] strSplitDot(String str){
-        String[] result = {};
-        if(StrUtil.isNotEmpty(str)){
-            result = str.split("\\.");
-        }
-        return result;
-    }
 }

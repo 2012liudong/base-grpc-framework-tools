@@ -32,8 +32,8 @@ public class ModulePersistence extends AbstractModule {
     public void configOwnSourceFile(){
         super.configOwnSourceFile();
 
-        getSourceFiles().add(new SourceFile("application-persistence.properties", "",  GenEnum.fileType.yml, GenEnum.fileOperatorType.append));
+        getSourceFiles().add(new SourceFile("application-persistence.properties", getResourcesPath(),"",  GenEnum.fileType.yml, GenEnum.fileOperatorType.append));
 
-        getSourceFiles().add(new SourceFile("pom_persistence.xml", "",  GenEnum.fileType.xml, GenEnum.fileOperatorType.copy));
+        getSourceFiles().add(new SourceFile("pom_persistence.xml", getBasePath(),"",  GenEnum.fileType.xml, GenEnum.fileOperatorType.copy));
     }
 }

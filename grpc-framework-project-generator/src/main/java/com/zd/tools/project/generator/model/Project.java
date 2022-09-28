@@ -11,12 +11,6 @@ import java.util.Map;
 @Data
 public class Project extends AbstractBo {
 
-    //  /Users/liudong/ideaWS/GitHub/base-grpc-framework-tools/grpc-framework-project-generator/target/classes/output/base-grpc-framework/
-    private String basePath;
-
-    //  base-grpc-framework
-    private String name;
-
     //com.zd
     private String groupId;
 
@@ -34,8 +28,7 @@ public class Project extends AbstractBo {
     private ModulePropertyBo modulePropertyBo;
 
     public void configOwnSourceFile(){
-
-        getSourceFiles().add(new SourceFile("pom_parent.xml", "",  GenEnum.fileType.xml, GenEnum.fileOperatorType.copy));
+        getSourceFiles().add(new SourceFile("pom_parent.xml", getBasePath(), "", GenEnum.fileType.xml, GenEnum.fileOperatorType.copy));
     }
 
 }

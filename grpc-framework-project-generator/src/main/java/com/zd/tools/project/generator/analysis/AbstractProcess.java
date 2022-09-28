@@ -21,8 +21,6 @@ public abstract class AbstractProcess {
         return this.context.hasError();
     }
 
-    abstract protected void validate();
-
     abstract protected void parse();
 
     abstract protected void clear();
@@ -30,7 +28,6 @@ public abstract class AbstractProcess {
     abstract protected void build();
 
     public final void process(){
-        validate();
         parse();
         if(context.hasError()){
             context.getErrorList().stream().forEach(item -> log.error(item));

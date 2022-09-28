@@ -11,6 +11,7 @@ import com.zd.tools.project.generator.consts.Keys;
 import com.zd.tools.project.generator.model.AbstractModule;
 import com.zd.tools.project.generator.model.Project;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -26,8 +27,10 @@ public final class SettingFileConvert {
         project.setVersion(original.get(Keys.KEY_PROJECT_VERSION ));
         project.setBasePackage(original.get(Keys.KEY_PROJECT_BASE_PACKAGE ));
         project.setPackaging(original.get(Keys.KEY_PROJECT_PACKAGING ));
+        project.setBasePath(context.getRootPath() + Const.PATH_ROOT + project.getName() + File.separator);
+        project.setModulePropertyBo( BuildModuleUtil.ModuleBuildTool.buildModuleProperty("", original) );
 
-        project.setModulePropertyBo( BuildModuleUtil.ModuleBuildTool.buildProperty("", original) );
+        project.configOwnSourceFile();
 
         return project;
     }
@@ -53,30 +56,35 @@ public final class SettingFileConvert {
                 }
                 AbstractModule result;
                 switch (moduleType){
-                    case persistence:
-                        result = BuildModuleUtil.buildModulePersistence(tempModuleName, original); break;
+                    case api:
+                        result = BuildModuleUtil.buildModuleApi(tempModuleName, original);         break;
+                    case proto:
+                        result = BuildModuleUtil.buildModuleProto(tempModuleName, original);       break;
+
+                    case application:
+                        result = BuildModuleUtil.buildModuleApplication(tempModuleName, original); break;
+
                     case restful:
                         result = BuildModuleUtil.buildModuleRestful(tempModuleName, original);     break;
                     case grpc:
                         result = BuildModuleUtil.buildModuleGrpc(tempModuleName, original);        break;
                     case fixed:
                         result = BuildModuleUtil.buildModuleFixed(tempModuleName, original);       break;
-                    case proto:
-                        result = BuildModuleUtil.buildModuleProto(tempModuleName, original);       break;
-                    case application:
-                        result = BuildModuleUtil.buildModuleApplication(tempModuleName, original); break;
-                    case api:
-                        result = BuildModuleUtil.buildModuleApi(tempModuleName, original);         break;
+
+                    case persistence:
+                        result = BuildModuleUtil.buildModulePersistence(tempModuleName, original); break;
+
                     case common:
                     default:
                         result = BuildModuleUtil.buildModuleCommon(tempModuleName, original);
                 }
-                result.setName(tempModuleName);
+                result.setBasePath(context.getProject().getBasePath() + context.getProject().getName() + "-" + tempModuleName);
                 return result;
             };
 
             AbstractModule moduleBo = function.apply(setting);
-            //需要验证必要的属性
+            configOwnAttr(context, moduleBo);
+            //验证必要的属性
             if( moduleBo !=null ){
                 if( CollUtil.isEmpty(moduleBo.validate())){
                     moduleBos.add(moduleBo);
@@ -88,5 +96,31 @@ public final class SettingFileConvert {
         }
 
         return moduleBos;
+    }
+
+    private static void configOwnAttr(Context context, AbstractModule moduleBo){
+        //设置文件目录
+        moduleBo.setSrcPath(      moduleBo.getBasePath() + Const.PATH_MODULE_SOURCE);
+        moduleBo.setResourcesPath(moduleBo.getBasePath() + Const.PATH_MODULE_RESOURCE);
+        moduleBo.setPackagePath(  moduleBo.getBasePath() + Const.PATH_MODULE_SOURCE
+                                  + File.separator + StrUtil.replace(context.getProject().getBasePackage(), ".", File.separator)
+                                  + File.separator + moduleBo.getName());
+
+        //设置公共的目录
+        moduleBo.getDirs().add(moduleBo.getBasePath());
+        moduleBo.getDirs().add(moduleBo.getSrcPath());
+        moduleBo.getDirs().add(moduleBo.getResourcesPath());
+        moduleBo.getDirs().add(moduleBo.getPackagePath());
+
+        //设置个性化的目录和文件
+        moduleBo.configOwnDir();
+
+        moduleBo.configOwnSourceFile();
+
+        context.getProject().getModules().put(moduleBo.getName(), moduleBo);
+
+        if(moduleBo.getType() == GenEnum.projectType.application ){
+            context.setSpringBootResource(moduleBo.getResourcesPath());
+        }
     }
 }

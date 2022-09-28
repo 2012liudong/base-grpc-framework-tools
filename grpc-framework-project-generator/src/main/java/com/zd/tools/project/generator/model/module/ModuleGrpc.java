@@ -24,13 +24,14 @@ public class ModuleGrpc extends AbstractModule {
     @Override
     public void configOwnSourceFile(){
         super.configOwnSourceFile();
-        getSourceFiles().add(new SourceFile("log4j2.xml", "",  GenEnum.fileType.config, GenEnum.fileOperatorType.copy));
-        getSourceFiles().add(new SourceFile("GloablInterceptorRegister.j","/grpc/interceptor", GenEnum.fileType.source, GenEnum.fileOperatorType.create));
-        getSourceFiles().add(new SourceFile("GlobalServerInterceptor.j","/grpc/interceptor", GenEnum.fileType.source, GenEnum.fileOperatorType.create));
-        getSourceFiles().add(new SourceFile("GrpcTokenInterceptor.j","/grpc/interceptor", GenEnum.fileType.source, GenEnum.fileOperatorType.create));
+        getSourceFiles().add(new SourceFile("log4j2.xml",                 getResourcesPath(), "", GenEnum.fileType.config, GenEnum.fileOperatorType.copy));
 
-        getSourceFiles().add(new SourceFile("application-grpc.properties", "",  GenEnum.fileType.yml, GenEnum.fileOperatorType.append));
+        getSourceFiles().add(new SourceFile("GrpInterceptorRegister.java",getPackagePath(),   File.separator + "grpc"+ File.separator + "interceptor", GenEnum.fileType.source, GenEnum.fileOperatorType.create));
+        getSourceFiles().add(new SourceFile("GrpcAccessInterceptor.java",  getPackagePath(),  File.separator + "grpc"+ File.separator + "interceptor", GenEnum.fileType.source, GenEnum.fileOperatorType.create));
+        getSourceFiles().add(new SourceFile("GrpcTokenInterceptor.java",     getPackagePath(),File.separator + "grpc"+ File.separator + "interceptor", GenEnum.fileType.source, GenEnum.fileOperatorType.create));
 
-        getSourceFiles().add(new SourceFile("pom_grpc.xml", "",  GenEnum.fileType.xml, GenEnum.fileOperatorType.copy));
+        getSourceFiles().add(new SourceFile("application-grpc.properties", getResourcesPath(), "",  GenEnum.fileType.yml, GenEnum.fileOperatorType.append));
+
+        getSourceFiles().add(new SourceFile("pom_grpc.xml", getBasePath(), "",  GenEnum.fileType.xml, GenEnum.fileOperatorType.copy));
     }
 }

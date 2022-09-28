@@ -1,13 +1,11 @@
 package com.zd.tools.project.generator.analysis;
 
 import cn.hutool.core.io.FileUtil;
-import cn.hutool.core.util.StrUtil;
 import cn.hutool.log.Log;
 import com.zd.tools.project.generator.analysis.process.FileGeneratorUtil;
 import com.zd.tools.project.generator.analysis.process.SettingFileConvert;
 import com.zd.tools.project.generator.analysis.process.WrapTreeUtil;
 import com.zd.tools.project.generator.consts.Const;
-import com.zd.tools.project.generator.consts.GenEnum;
 import com.zd.tools.project.generator.model.AbstractModule;
 import com.zd.tools.project.generator.model.Project;
 import com.zd.tools.project.generator.model.file.SourceFile;
@@ -25,46 +23,17 @@ public class GeneratorProcess extends AbstractProcess{
     }
 
     @Override
-    protected void validate() {
-
-    }
-
-    @Override
     public void parse() {
         final Map<String, String> original = getContext().getOriginal();
+        //解析project
         Project project = SettingFileConvert.buidlProject(getContext(), original);
-        project.setBasePath(getContext().getRootPath() + Const.PATH_ROOT + project.getName() + File.separator);
         getContext().setProject(project);
 
+        //解析module
         List<AbstractModule>  moduleBos = SettingFileConvert.buildModules(getContext(), original);
 
+        //处理wrapBy属性和setBasePath属性
         WrapTreeUtil.buildTree(project, moduleBos);
-
-        project.configOwnSourceFile();
-
-        for(AbstractModule item: moduleBos){
-            //设置文件目录
-            item.setSrcPath(item.getBasePath()+ File.separator + "src" + File.separator + "main" + File.separator + "java");
-            item.setResourcesPath(item.getBasePath()+ File.separator + "src" + File.separator + "main" + File.separator + "resources");
-            item.setPackagePath(item.getBasePath()+ File.separator + "src" + File.separator + "main" + File.separator + "java" + File.separator + StrUtil.replace(project.getBasePackage(), ".", File.separator) + File.separator + item.getName());
-
-            //设置公共的目录
-            item.getDirs().add(item.getBasePath());
-            item.getDirs().add(item.getSrcPath());
-            item.getDirs().add(item.getResourcesPath());
-            item.getDirs().add(item.getPackagePath());
-
-            //设置个性化的目录
-            item.configOwnDir();
-
-            item.configOwnSourceFile();
-
-            project.getModules().put(item.getName(), item);
-
-            if(item.getType() == GenEnum.projectType.application ){
-                getContext().setSpringBoot(item.getResourcesPath());
-            }
-        }
     }
 
     @Override
@@ -77,18 +46,32 @@ public class GeneratorProcess extends AbstractProcess{
 
     @Override
     public void build() {
-        for(SourceFile item : getContext().getProject().getSourceFiles()){
-            FileGeneratorUtil.createProjectFile(getContext().getProject(), item);
-        }
 
+        log.info("-START-");
+        log.info("Start build project:"+ getContext().getProject().getName());
+        for(SourceFile file : getContext().getProject().getSourceFiles()){
+            log.info(Const.C_TAB + Const.C_TAB + "...file... " + file.getPath() + file.getName());
+            FileGeneratorUtil.createProjectFile(getContext().getProject(), file);
+        }
+        log.info(Const.LOG_SPLIT_DOT);
+
+        log.info("Start build modules totalSize:"+ getContext().getProject().getModules().size());
+        int count = 0;
         for(AbstractModule moduleBo : getContext().getProject().getModules().values()){
-            log.info("start build "+ moduleBo.getName());
-            FileGeneratorUtil.createProjectStructure(getContext().getProject(), moduleBo);
+            log.info(Const.C_TAB + (++count) + "." + moduleBo.getArtifactId());
+
+            for(String dir : moduleBo.getDirs()){
+                log.info(Const.C_TAB + Const.C_TAB + "...dir... " + dir);
+                FileGeneratorUtil.createProjectStructure(getContext().getProject(), dir);
+            }
 
             for (SourceFile item : moduleBo.getSourceFiles()) {
-                moduleBo.getConfigPropertyMap().put(Const.PATH_SPRINGBOOT_FILE, getContext().getSpringBoot());
+                log.info(Const.C_TAB + Const.C_TAB + "...file... " + item.getPath() +File.separator+ item.getName());
+                moduleBo.getConfigPropertyMap().put(Const.PATH_SPRINGBOOT_FILE, getContext().getSpringBootResource());
                 FileGeneratorUtil.createModuleFile(getContext().getProject(), moduleBo, item);
             }
+            log.info(Const.LOG_SPLIT_DOT_SHORT);
         }
+        log.info("-END-");
     }
 }

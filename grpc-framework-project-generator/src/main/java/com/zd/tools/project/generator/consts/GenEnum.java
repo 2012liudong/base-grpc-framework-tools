@@ -2,8 +2,6 @@ package com.zd.tools.project.generator.consts;
 
 public interface GenEnum {
 
-//    GenEnum getEnum(String code);
-
     enum projectType implements GenEnum{
         proto,
         api,
@@ -14,10 +12,6 @@ public interface GenEnum {
         grpc,
         fixed,
         ;
-//        @Override
-//        public GenEnum getEnum(String code) {
-//            return EnumUtil.getEnumMap(GenEnum.projectType.class).get(code);
-//        }
     }
 
     //源文件目录名

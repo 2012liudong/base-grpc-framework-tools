@@ -6,13 +6,13 @@ package ${package};
  * @author liudong
  * @date 2022/6/13 10:41 PM
  */
-@SpringBootApplication(scanBasePackages = {"${package}", "cn.hutool.extra.spring"})
-@MapperScan("${package}")
+@SpringBootApplication(scanBasePackages = {"${restfulModule}${fixedModule}${grpcModule}", "cn.hutool.extra.spring"})
+@MapperScan("${restfulModule}${fixedModule}${grpcModule}")
 @EnableConfigurationProperties
 public class ${className} {
 
     public static void main(String []args){
         TimeZone.setDefault(TimeZone.getTimeZone("CTT"));
-        SpringApplication.run({className}.class, args);
+        SpringApplication.run(${className}.class, args);
     }
 }

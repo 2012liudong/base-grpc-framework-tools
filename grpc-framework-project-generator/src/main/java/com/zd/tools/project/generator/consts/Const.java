@@ -7,62 +7,69 @@ import java.io.File;
 
 public interface Const {
 
-    String PATH_ROOT = "output" + File.separator;
-
-    String ERR_MODULE_NOTCONFIG = "Module({}) isn't config";
-    String ERR_MODULE_TYPE = "ModuleType({}) value of module[{}] is invalid, must be one of proto、api、application、persistence、common、restful、grpc or fixed ";
-
-    String ERR_MODULE_NOSUPPORT = "{} isn't support wrapBy attribute";
-
-
-    String SOURCE_ROOT = ResourceUtil.getResource(".").getPath() + "slt/source/";
-
-    String FILENAME_POP = "pom.xml";
-
-    String FILENAME_SPRING = "application-dev.properties";
-
-
     String C_LF = String.valueOf(StrPool.C_LF);//换行符
     String C_TAB = String.valueOf(StrPool.C_TAB);//TAB符
 
-    //project
+    // 工程输出目录
+    String PATH_ROOT = "output" + File.separator;
+
+    //工具内置的源文件根目录
+    String SOURCE_ROOT = ResourceUtil.getResource(".").getPath() + "slt/source/";
+
+    String FILENAME_POP = "pom.xml";
+    String FILENAME_SPRING = "application-dev.properties";
+
+    /*-----创建project相关，没有目录只有一个根pom.xml文件*/
+    //pom.xml中<modules>中内容
     String PLACEHOLDER_PROJECT_POM_MODULES  = "moduleList";
 
-    //persistence
-    String PLACEHOLDER_MODULE_PERSISTENCE_MAPPER = "mapper";
-
-
-
-    //module
-    String PLACEHOLDER_MODULE_NAME_PARENT = "-parent";
-    String PLACEHOLDER_MODULE_NAME_SUFFIX = "Module";
-
+    /*------创建源文件*/
+    //package 声明
     String PLACEHOLDER_MODULE_PACKAGE = "package";
+    //import 引入
+    String PLACEHOLDER_MODULE_NAME_SUFFIX = "Module";
+    String PRE_PLACEHOLDER_FIXED_MODULE_IMPORT = GenEnum.projectType.fixed +PLACEHOLDER_MODULE_NAME_SUFFIX;
+    String PRE_PLACEHOLDER_RESTFUL_MODULE_IMPORT = GenEnum.projectType.restful +PLACEHOLDER_MODULE_NAME_SUFFIX;
+    String PRE_PLACEHOLDER_GRPC_MODULE_IMPORT = GenEnum.projectType.grpc +PLACEHOLDER_MODULE_NAME_SUFFIX;
+    //className定义
     String PLACEHOLDER_MODULE_CLASS_NAME = "className";
-    String PLACEHOLDER_MODULE_PARENT_MODULE = "parentModule";
+
+
+    /*------创建module结构相关*/
+    //创建root工程相关内容
+    String MODULE_PARENT_NAME__SUFFIX = "-parent";
     String PLACEHOLDER_MODULE_PROJECT_NAME = "projectName";
+
+    String PATH_MODULE_SOURCE   = File.separator + "src" + File.separator + "main" + File.separator + "java";
+    String PATH_MODULE_RESOURCE = File.separator + "src" + File.separator + "main" + File.separator + "resources";
+
+    //创建子工程pom.xml相关
+    //<parent>节点设置
+    String PLACEHOLDER_MODULE_PARENT_MODULE_ARTIFACT_ID = "parentModule";
     String PLACEHOLDER_MODULE_PARENT_GROUP_ID = "parentGroupId";
     String PLACEHOLDER_MODULE_PARENT_VERSION = "parentVersion";
-    String PLACEHOLDER_MODULE_ARTIFACTID = "artifactId";
+
+    //子模块设置
+    String PLACEHOLDER_MODULE_ARTIFACT_ID = "artifactId";
     String PLACEHOLDER_MODULE_PACKAGING = "packaging";
 
-    String PATH_MODULE_RESTFUL = "restful";
-    String PATH_MODULE_GRPC = "grpc";
+    //模块间相互引用
+    //application特殊设置
+    String PRE__MODULE_ARTIFACT_ID_SUFFIX = "ModuleArtifactId";
+    String PRE_PLACEHOLDER_FIXED_MODULE_ARTIFACT_ID = GenEnum.projectType.fixed +PRE__MODULE_ARTIFACT_ID_SUFFIX;
+    String PRE_PLACEHOLDER_RESTFUL_MODULE_ARTIFACT_ID = GenEnum.projectType.restful +PRE__MODULE_ARTIFACT_ID_SUFFIX;
+    String PRE_PLACEHOLDER_GRPC_MODULE_ARTIFACT_ID = GenEnum.projectType.grpc +PRE__MODULE_ARTIFACT_ID_SUFFIX;
+    String PLACEHOLDER_MODULE_PERSISTENCE_MAPPER = "mapper";
 
-    String PATH_SPRINGBOOT_FILE = "springBoot";
+    /*------创建springboot配置文件*/
+    String PATH_SPRINGBOOT_FILE = "springBootResource";
 
-    String PLACEHOLDER_SPRINGBOOT_PROJECT_NAME = "projectName";
-    String PLACEHOLDER_SPRINGBOOT_APPLICATION_TOKENKEY = "tokenKey";
-    String PLACEHOLDER_SPRINGBOOT_APPLICATION_APIPATH = "apiPath";
-    String PLACEHOLDER_SPRINGBOOT_RESTFUL_PROT = "port";
+    //错误信息
+    String ERR_MODULE_NOTCONFIG = "Module({}) isn't config";
+    String ERR_MODULE_TYPE = "ModuleType({}) value of module[{}] is invalid, must be one of proto、api、application、persistence、common、restful、grpc or fixed ";
+    String ERR_MODULE_NOSUPPORT = "{} isn't support wrapBy attribute";
 
-    String PLACEHOLDER_SPRINGBOOT_GRPC_PORT = "grpcPort";
-
-    String PLACEHOLDER_SPRINGBOOT_MYSQL_IP = "ip";
-    String PLACEHOLDER_SPRINGBOOT_MYSQL_PORT = "dbPort";
-    String PLACEHOLDER_SPRINGBOOT_MYSQL_DBNAME = "dbName";
-    String PLACEHOLDER_SPRINGBOOT_MYSQL_USERNAME = "username";
-    String PLACEHOLDER_SPRINGBOOT_MYSQL_PASSWORD = "password";
-    String PLACEHOLDER_SPRINGBOOT_MAPPER = "mapper";
+    String LOG_SPLIT_DOT =       "--------------------------------------------------------------------------------------";
+    String LOG_SPLIT_DOT_SHORT = ".........................................................................";
 
 }

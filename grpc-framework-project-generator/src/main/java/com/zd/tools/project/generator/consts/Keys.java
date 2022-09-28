@@ -15,12 +15,15 @@ public interface Keys {
     String KEY_PROJECT_PROPERTY_APIPATH      = "project.app.apiPath";
 
     /**------module setting keys------*/
-    String KEY_MODULE_PORT                  = ".moudle.port";
-    String KEY_MODULE_GRPC_PORT             = ".moudle.grpc.port";
+    String KEY_MODULE_WRAPBY                = ".module.wrapBy";
     String KEY_MODULE_TYPE                  = ".module.type";
     String KEY_MODULE_ARTIFACT_ID           = ".module.artifactId";
     String KEY_MODULE_PACKAGING             = ".module.packaging";
-    String KEY_MODULE_WRAPBY                = ".module.wrapBy";
+
+    String KEY_MODULE_PORT                  = ".moudle.port";
+
+    String KEY_MODULE_GRPC_PORT             = ".moudle.grpc.port";
+
     String KEY_MODULE_MAPPER                = ".module.mysql.mapper";
     String KEY_MODULE_MYSQL_IP              = ".module.mysql.dbIp";
     String KEY_MODULE_MYSQL_PORT            = ".module.mysql.dbPort";

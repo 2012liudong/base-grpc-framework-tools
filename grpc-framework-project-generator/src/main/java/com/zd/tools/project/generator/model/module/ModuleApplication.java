@@ -13,11 +13,6 @@ import java.io.File;
 public class ModuleApplication extends AbstractModule {
 
     @Override
-    public String getWrapBy() {
-        return null;
-    }
-
-    @Override
     public void setWrapBy(String wrapBy) {
         throw new RuntimeException(StrUtil.format(Const.ERR_MODULE_NOSUPPORT, getName()));
     }
@@ -31,11 +26,10 @@ public class ModuleApplication extends AbstractModule {
     @Override
     public void configOwnSourceFile(){
         super.configOwnSourceFile();
-        getSourceFiles().add(new SourceFile("Application.j", "",  GenEnum.fileType.source, GenEnum.fileOperatorType.create));
-        getSourceFiles().add(new SourceFile("SwaggerConfig.j","/config", GenEnum.fileType.source, GenEnum.fileOperatorType.copy));
+        getSourceFiles().add(new SourceFile("Application.java", getPackagePath(), "", GenEnum.fileType.source, GenEnum.fileOperatorType.create));
 
-        getSourceFiles().add(new SourceFile("application-dev.properties", "",  GenEnum.fileType.yml, GenEnum.fileOperatorType.copy));
+        getSourceFiles().add(new SourceFile("application-dev.properties", getResourcesPath(), "", GenEnum.fileType.yml, GenEnum.fileOperatorType.copy));
 
-        getSourceFiles().add(new SourceFile("pom_application.xml", "",  GenEnum.fileType.xml, GenEnum.fileOperatorType.copy));
+        getSourceFiles().add(new SourceFile("pom_application.xml", getBasePath(), "", GenEnum.fileType.xml, GenEnum.fileOperatorType.copy));
     }
 }
