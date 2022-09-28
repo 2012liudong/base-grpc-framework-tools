@@ -1,5 +1,8 @@
 package com.zd.tools.project.generator;
 
+import cn.hutool.core.collection.CollUtil;
+import cn.hutool.core.util.ArrayUtil;
+import cn.hutool.core.util.StrUtil;
 import cn.hutool.log.Log;
 import cn.hutool.setting.Setting;
 import cn.hutool.setting.SettingUtil;
@@ -11,10 +14,14 @@ import java.io.File;
 public class MainClass {
     private static final Log log = Log.get();
 
-    private final static String projectSettingFileName = "project.setting";
+    private static String projectSettingFileName = "project.setting";
 
     public static void main(String []args){
         String currentPath = MainClass.mainPath();
+        if(ArrayUtil.isNotEmpty(args)){
+            projectSettingFileName = args[0];
+        }
+        log.info("Setting file:" + projectSettingFileName);
         Setting setting =  SettingUtil.get(currentPath + File.separator + projectSettingFileName);
 
         Context context = new Context(currentPath, setting.getGroupedMap().get(""));
