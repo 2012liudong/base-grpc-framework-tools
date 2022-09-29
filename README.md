@@ -3,7 +3,7 @@ A tool for base-grpc-framework, through config file auto generator java server p
 
 -------------------------------------------------------------------------------
 ## 📦 Start
-```
+```shell
 # decompression zip file
 # Step1: generator sprintBoot server project
 java -jar grpc-framework-project-generator-1.0-SNAPSHOT-jar-with-dependencies.jar [setting=project_fixed.setting] [slt=/slt/source/]
@@ -19,7 +19,7 @@ open http://localhost:18080/swagger-ui.html
 ```
 
 ## 🧬 Test
-```
+``` shell
 # decompression zip file and exec command
 sh ./test.sh
 ```
