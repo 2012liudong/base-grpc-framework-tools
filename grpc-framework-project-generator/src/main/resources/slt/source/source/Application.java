@@ -13,7 +13,7 @@ import java.util.TimeZone;
  * @date 2022/6/13 10:41 PM
  */
 @SpringBootApplication(scanBasePackages = {"${restfulModule}${fixedModule}${grpcModule}","${commonModule}", "cn.hutool.extra.spring"})
-@MapperScan("${restfulModule}${fixedModule}${grpcModule}")
+@MapperScan("${persistenceModule}")
 @EnableConfigurationProperties
 public class ${className} {
 
