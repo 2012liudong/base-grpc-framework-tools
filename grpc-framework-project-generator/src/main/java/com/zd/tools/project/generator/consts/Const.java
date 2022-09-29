@@ -11,7 +11,10 @@ public interface Const {
     String C_LF = StrPool.LF;//换行符
     String C_TAB = StrPool.TAB;//TAB符
     String C_SLASH = StrPool.SLASH;//斜杠
-    String C_BACKSLASH = StrPool.BACKSLASH;
+    String C_BACKSLASH = StrPool.BACKSLASH;//反斜杠
+
+    String PROJECT_SETTING_FILE_NAME = "project.setting";
+    String PROJECT_EXT_SOURCE_CONFIG_FILE_NAME = "sltext.json";
 
     // 工程输出目录
     String PATH_ROOT = "/output" + File.separator;

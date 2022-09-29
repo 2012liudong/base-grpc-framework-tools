@@ -1,0 +1,30 @@
+project.name = framework-restful-test
+project.groupId = com.zd
+project.version = 1.0-SNAPSHOT
+project.packaging = jar
+
+project.basePackage = com.zd.frameworktest.restful
+
+project.app.tokenKey = token
+project.app.apiPath = /api/**
+
+project.modules = app, common, core, dao
+
+common.module.type = common
+common.module.artifactId = framework-restful-test-common
+
+app.module.type = application
+app.module.artifactId = framework-restful-test-app
+
+core.module.type = restful
+core.module.artifactId = framework-restful-test-core
+core.moudle.port = 18080
+
+dao.module.type = persistence
+dao.module.artifactId = framework-restful-test-dao
+dao.module.mysql.dbIp = 127.0.0.1
+dao.module.mysql.dbPort = 3306
+dao.moudle.mysql.dbName = badCase
+dao.module.mysql.dbUsername = root
+dao.module.mysql.dbPassword = 12345678
+dao.module.mysql.mapper = mybatis

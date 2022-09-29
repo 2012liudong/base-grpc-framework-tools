@@ -1,6 +1,8 @@
 package com.zd.tools.project.generator.analysis;
 
 import cn.hutool.log.Log;
+import com.zd.tools.project.generator.ExtCache;
+import com.zd.tools.project.generator.model.file.ExtFileLoadUtil;
 import lombok.Data;
 
 @Data
@@ -21,6 +23,10 @@ public abstract class AbstractProcess {
         return this.context.hasError();
     }
 
+    public void before(){
+        ExtCache.extSourceFile = ExtFileLoadUtil.loadExtFile();
+    }
+
     abstract protected void parse();
 
     abstract protected void clear();
@@ -28,6 +34,7 @@ public abstract class AbstractProcess {
     abstract protected void build();
 
     public final void process(){
+        before();
         parse();
         if(context.hasError()){
             context.getErrorList().stream().forEach(item -> log.error(item));

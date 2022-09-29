@@ -1,32 +1,40 @@
 package com.zd.tools.project.generator;
 
 import cn.hutool.core.util.ArrayUtil;
+import cn.hutool.core.util.StrUtil;
 import cn.hutool.log.Log;
 import cn.hutool.setting.Setting;
 import cn.hutool.setting.SettingUtil;
 import com.zd.tools.project.generator.analysis.Context;
 import com.zd.tools.project.generator.analysis.GeneratorProcess;
+import com.zd.tools.project.generator.consts.Const;
 
 import java.io.File;
+import java.util.List;
 
 public class MainClass {
     private static final Log log = Log.get();
 
-    private static String projectSettingFileName = "project.setting";
-
-    public static String currentPath;
-
     public static void main(String []args){
 
-        currentPath = MainClass.mainPath();
+        ExtCache.currentPath = MainClass.mainPath();
+
         if(ArrayUtil.isNotEmpty(args)){
-            projectSettingFileName = args[0];
+            for(String param : args){
+                List<String> item = StrUtil.split(param, "=");
+                if(StrUtil.trim(item.get(0)).equals("setting")){
+                    ExtCache.projectSettingFile = StrUtil.trim(item.get(1));
+                }
+                if(StrUtil.trim(item.get(0)).equals("slt")){
+                    ExtCache.sltPath = File.separator + StrUtil.trim(item.get(1)) + File.separator;
+                }
+            }
         }
 
-        log.info("Setting file:" + projectSettingFileName);
-        Setting setting =  SettingUtil.get(currentPath + File.separator + projectSettingFileName);
+        log.info("Setting file:" + ExtCache.projectSettingFile);
+        Setting setting =  SettingUtil.get(ExtCache.currentPath + File.separator + ExtCache.projectSettingFile);
 
-        Context context = new Context(currentPath, setting.getGroupedMap().get(""));
+        Context context = new Context(ExtCache.currentPath, setting.getGroupedMap().get(""));
 
         new GeneratorProcess(context).process();
     }
@@ -36,7 +44,7 @@ public class MainClass {
 
         if (path.contains("jar")) {
             path = path.substring(0, path.lastIndexOf("."));
-            path = path.substring(0, path.lastIndexOf("/"));
+            path = path.substring(0, path.lastIndexOf(Const.C_SLASH));
         }
         return path;
     }

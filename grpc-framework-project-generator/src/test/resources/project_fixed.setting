@@ -1,0 +1,34 @@
+project.name = framework-fixed-test
+project.groupId = com.zd
+project.version = 1.0-SNAPSHOT
+project.packaging = jar
+
+project.basePackage = com.zd.frameworktest.grpc
+
+project.app.tokenKey = token
+project.app.apiPath = /api/**
+
+project.modules = proto, app, common, core, dao
+
+proto.module.type = proto
+proto.module.artifactId = framework-fixed-test-proto
+
+common.module.type = common
+common.module.artifactId = framework-fixed-test-common
+
+app.module.type = application
+app.module.artifactId = framework-fixed-test-app
+
+core.module.type = fixed
+core.module.artifactId = framework-fixed-test-core
+core.moudle.port = 18080
+core.moudle.grpc.port = 9090
+
+dao.module.type = persistence
+dao.module.artifactId = framework-fixed-test-dao
+dao.module.mysql.dbIp = 127.0.0.1
+dao.module.mysql.dbPort = 3306
+dao.moudle.mysql.dbName = badCase
+dao.module.mysql.dbUsername = root
+dao.module.mysql.dbPassword = 12345678
+dao.module.mysql.mapper = mybatis
