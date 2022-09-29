@@ -31,6 +31,7 @@ public final class SettingFileConvert {
         project.setModulePropertyBo( BuildModuleUtil.ModuleBuildTool.buildModuleProperty("", original) );
 
         project.configOwnSourceFile();
+        project.configOwnDir();
 
         return project;
     }

@@ -4,7 +4,7 @@ import cn.hutool.core.util.StrUtil;
 import com.google.protobuf.*;
 import com.google.protobuf.util.JsonFormat;
 import com.google.protobuf.util.Timestamps;
-import com.zd.baseframework.common.constant.Constants;
+import ${commonModule}.constant.Constants;
 
 import java.time.*;
 import java.time.format.DateTimeFormatter;

@@ -16,12 +16,10 @@ public class ExtFileLoadUtil {
     public static Map<String, List<SourceFile>> loadExtFile(){
         Map<String, List<SourceFile>> extSourceFile = new HashMap<>();
 
-        String configFilePath = ExtCache.currentPath + File.separator +  Const.PROJECT_EXT_SOURCE_CONFIG_FILE_NAME;
-        if(!FileUtil.exist(configFilePath) || !JSONUtil.isJson(configFilePath)){
+        String configFilePath = ExtCache.currentPath + File.separator + ExtCache.sltPath + Const.PROJECT_EXT_SOURCE_CONFIG_FILE_NAME;
+        if(!FileUtil.exist(configFilePath) ){
             return extSourceFile;
         }
-
-
         JSONObject jsonObject = JSONUtil.parseObj(FileUtil.readUtf8String(configFilePath));
         for(GenEnum.projectType item : GenEnum.projectType.values()){
             List<SourceFile> files = JSONUtil.toList(jsonObject.get(item.name(),String.class), SourceFile.class);

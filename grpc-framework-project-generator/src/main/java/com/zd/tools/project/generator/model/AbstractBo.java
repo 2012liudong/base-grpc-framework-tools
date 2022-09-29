@@ -3,7 +3,9 @@ package com.zd.tools.project.generator.model;
 import com.zd.tools.project.generator.model.file.SourceFile;
 import lombok.Data;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Data
@@ -20,8 +22,8 @@ public abstract class AbstractBo {
     * */
     private String name;
 
-    private Set<String> dirs = new HashSet<>();
+    private List<String> dirs = new ArrayList<>();
 
-    private Set<SourceFile> sourceFiles = new HashSet<>();
+    private List<SourceFile> sourceFiles = new ArrayList<>();
 
 }

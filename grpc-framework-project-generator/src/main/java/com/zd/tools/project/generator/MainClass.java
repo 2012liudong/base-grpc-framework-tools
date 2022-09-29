@@ -31,7 +31,6 @@ public class MainClass {
             }
         }
 
-        log.info("Setting file:" + ExtCache.projectSettingFile);
         Setting setting =  SettingUtil.get(ExtCache.currentPath + File.separator + ExtCache.projectSettingFile);
 
         Context context = new Context(ExtCache.currentPath, setting.getGroupedMap().get(""));

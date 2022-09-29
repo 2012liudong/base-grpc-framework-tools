@@ -35,21 +35,13 @@
         </dependency>
         <dependency>
             <groupId>${parentGroupId}</groupId>
-            <artifactId>${apiModuleArtifactId}</artifactId>
-            <version>${project.parent.version}</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>${parentGroupId}</groupId>
             <artifactId>${protoModuleArtifactId}</artifactId>
             <version>${project.parent.version}</version>
-            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>${parentGroupId}</groupId>
             <artifactId>${persistenceModuleArtifactId}</artifactId>
             <version>${project.parent.version}</version>
-            <scope>provided</scope>
         </dependency>
 
         <!--mybatis，mysql device-->

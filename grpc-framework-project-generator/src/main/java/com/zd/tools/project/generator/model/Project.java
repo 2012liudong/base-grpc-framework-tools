@@ -5,6 +5,7 @@ import com.zd.tools.project.generator.model.file.SourceFile;
 import com.zd.tools.project.generator.model.module.model.ModulePropertyBo;
 import lombok.Data;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -26,6 +27,10 @@ public class Project extends AbstractBo {
     private Map<String, AbstractModule> modules = new HashMap<>();
 
     private ModulePropertyBo modulePropertyBo;
+
+    public void configOwnDir() {
+        getDirs().add(getBasePath());
+    }
 
     public void configOwnSourceFile(){
         getSourceFiles().add(new SourceFile("pom_parent.xml", getBasePath(), "", GenEnum.fileType.xml, GenEnum.fileOperatorType.copy));
