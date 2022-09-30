@@ -97,6 +97,7 @@
 
     <modules>
         <module>grpc-framework-project-generator</module>
+        <module>myhbase</module>
     </modules>
 
     <build>

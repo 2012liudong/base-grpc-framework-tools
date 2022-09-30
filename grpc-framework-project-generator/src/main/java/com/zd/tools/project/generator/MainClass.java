@@ -22,10 +22,10 @@ public class MainClass {
         if(ArrayUtil.isNotEmpty(args)){
             for(String param : args){
                 List<String> item = StrUtil.split(param, "=");
-                if(StrUtil.trim(item.get(0)).equals("setting")){
+                if("setting".equals(StrUtil.trim(item.get(0)))){
                     ExtCache.projectSettingFile = StrUtil.trim(item.get(1));
                 }
-                if(StrUtil.trim(item.get(0)).equals("slt")){
+                if("slt".equals(StrUtil.trim(item.get(0)))){
                     ExtCache.sltPath = File.separator + StrUtil.trim(item.get(1)) + File.separator;
                 }
             }

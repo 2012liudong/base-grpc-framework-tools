@@ -1,5 +1,5 @@
 # base-grpc-framework-tools
-A tool for base-grpc-framework, through config file auto generator java server project. Can create restful、grpc and fixed(grp+restful) service. 
+A tool set for base-grpc-framework, through config file auto generator java server project. Can create restful、grpc and fixed(grp+restful) service. 
 
 -------------------------------------------------------------------------------
 ## 📦 Start
