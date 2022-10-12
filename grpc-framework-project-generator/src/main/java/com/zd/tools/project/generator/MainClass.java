@@ -40,6 +40,7 @@ public class MainClass {
 
     private static String mainPath(){
         String path = MainClass.class.getProtectionDomain().getCodeSource().getLocation().getPath();
+        //MainClass.class.getClassLoader().getResourceAsStream("");
 
         if (path.contains("jar")) {
             path = path.substring(0, path.lastIndexOf("."));
